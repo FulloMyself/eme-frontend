@@ -1,36 +1,3 @@
-contactForm.addEventListener('submit', async (e) => {
-    e.preventDefault(); // prevent default form submission
-
-    // Gather form data
-    const formData = {
-        name: contactForm.name.value,
-        email: contactForm.email.value,
-        phone: contactForm.phone.value,
-        service: contactForm.service.value,
-        message: contactForm.message.value
-    };
-
-    try {
-        const response = await fetch('https://your-backend.com/api/contact', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(formData)
-        });
-
-        const data = await response.json();
-
-        if (response.ok) {
-            showToast('Message sent successfully!', 'success');
-            contactForm.reset();
-        } else {
-            showToast(data.message || 'Failed to send message.', 'error');
-        }
-    } catch (err) {
-        console.error(err);
-        showToast('An error occurred. Please try again.', 'error');
-    }
-});
-
 // ---------------------------
 // Mobile Menu Toggle
 // ---------------------------
@@ -69,7 +36,7 @@ function showToast(message, type = 'success') {
 contactForm.addEventListener('submit', async (e) => {
     e.preventDefault(); // Prevent default form submission
 
-    // Gather form data
+    // Gather and trim form data
     const formData = {
         name: contactForm.name.value.trim(),
         email: contactForm.email.value.trim(),
@@ -78,15 +45,14 @@ contactForm.addEventListener('submit', async (e) => {
         message: contactForm.message.value.trim()
     };
 
-    // Basic front-end validation
+    // Front-end validation
     if (!formData.name || !formData.email || !formData.service || !formData.message) {
         showToast('Please fill in all required fields.', 'error');
         return;
     }
 
     try {
-        // Update this URL to your actual deployed backend
-        const response = await fetch('https://your-backend-url.onrender.com/api/contact', {
+        const response = await fetch('https://eme-backend-3dw0.onrender.com/api/contact', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(formData)
