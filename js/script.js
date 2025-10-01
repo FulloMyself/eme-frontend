@@ -37,7 +37,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         setTimeout(() => {
             formMessage.style.display = 'none';
-        }, 5000);
+        }, 7000); // show for 7 seconds
     }
 
     if (contactForm) {
@@ -68,18 +68,26 @@ document.addEventListener('DOMContentLoaded', () => {
                     body: JSON.stringify(formData)
                 });
 
-                const data = await response.json().catch(() => ({}));
+                let data;
+                try {
+                    data = await response.json();
+                } catch {
+                    data = {};
+                }
 
                 if (!response.ok) {
-                    const message = data?.message || 'Failed to send message.';
+                    // Show backend error if present
+                    const message = data?.message || `Failed to send message (status ${response.status}).`;
                     throw new Error(message);
                 }
 
+                // Success
                 showToast(data.message || 'Message sent successfully!', 'success');
                 contactForm.reset();
 
             } catch (err) {
                 console.error('Error submitting contact form:', err);
+                // Show detailed backend error for SMTP issues
                 showToast(err.message || 'An error occurred. Please try again later.', 'error');
             } finally {
                 if (submitButton) submitButton.disabled = false;
