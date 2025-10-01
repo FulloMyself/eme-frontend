@@ -10,13 +10,11 @@ document.addEventListener('DOMContentLoaded', () => {
     const navLinks = document.getElementById('navLinks');
 
     if (menuToggle && navLinks) {
-        // Toggle menu
         menuToggle.addEventListener('click', () => {
             navLinks.classList.toggle('active');
             menuToggle.classList.toggle('active');
         });
 
-        // Close menu on link click
         navLinks.querySelectorAll('a').forEach(link => {
             link.addEventListener('click', () => {
                 navLinks.classList.remove('active');
@@ -31,7 +29,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const contactForm = document.getElementById('contactForm');
     const formMessage = document.getElementById('formMessage');
 
-    // Show toast notification
     function showToast(message, type = 'success') {
         if (!formMessage) return;
         formMessage.textContent = message;
@@ -55,11 +52,14 @@ document.addEventListener('DOMContentLoaded', () => {
                 message: contactForm.message?.value.trim() || ''
             };
 
-            // Basic validation
             if (!formData.name || !formData.email || !formData.service || !formData.message) {
                 showToast('Please fill in all required fields.', 'error');
                 return;
             }
+
+            // Disable submit while sending
+            const submitButton = contactForm.querySelector('button[type="submit"]');
+            if (submitButton) submitButton.disabled = true;
 
             try {
                 const response = await fetch('https://eme-backend-3dw0.onrender.com/api/contact', {
@@ -70,8 +70,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
                 const data = await response.json().catch(() => ({}));
 
-                if (!response.ok || !data.success) {
-                    throw new Error(data.message || 'Failed to send message.');
+                if (!response.ok) {
+                    const message = data?.message || 'Failed to send message.';
+                    throw new Error(message);
                 }
 
                 showToast(data.message || 'Message sent successfully!', 'success');
@@ -79,7 +80,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
             } catch (err) {
                 console.error('Error submitting contact form:', err);
-                showToast(err.message || 'An error occurred. Please try again.', 'error');
+                showToast(err.message || 'An error occurred. Please try again later.', 'error');
+            } finally {
+                if (submitButton) submitButton.disabled = false;
             }
         });
     }
