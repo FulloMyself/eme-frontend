@@ -28,15 +28,16 @@ function showToast(message, type = 'success') {
     formMessage.textContent = message;
     formMessage.className = `form-message ${type}`;
     formMessage.style.display = 'block';
+
     setTimeout(() => {
         formMessage.style.display = 'none';
     }, 5000);
 }
 
+// Contact form submission handler
 contactForm.addEventListener('submit', async (e) => {
-    e.preventDefault(); // Prevent default form submission
+    e.preventDefault();
 
-    // Gather and trim form data
     const formData = {
         name: contactForm.name.value.trim(),
         email: contactForm.email.value.trim(),
@@ -45,7 +46,7 @@ contactForm.addEventListener('submit', async (e) => {
         message: contactForm.message.value.trim()
     };
 
-    // Front-end validation
+    // Basic front-end validation
     if (!formData.name || !formData.email || !formData.service || !formData.message) {
         showToast('Please fill in all required fields.', 'error');
         return;
@@ -58,9 +59,15 @@ contactForm.addEventListener('submit', async (e) => {
             body: JSON.stringify(formData)
         });
 
+        if (!response.ok) {
+            // Try parsing JSON from server error
+            const errorData = await response.json().catch(() => ({}));
+            throw new Error(errorData.message || 'Failed to send message.');
+        }
+
         const data = await response.json();
 
-        if (response.ok && data.success) {
+        if (data.success) {
             showToast(data.message || 'Message sent successfully!', 'success');
             contactForm.reset();
         } else {
@@ -68,6 +75,6 @@ contactForm.addEventListener('submit', async (e) => {
         }
     } catch (err) {
         console.error('Error submitting contact form:', err);
-        showToast('An error occurred. Please try again.', 'error');
+        showToast(err.message || 'An error occurred. Please try again.', 'error');
     }
 });
