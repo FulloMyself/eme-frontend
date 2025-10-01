@@ -59,20 +59,18 @@ contactForm.addEventListener('submit', async (e) => {
             body: JSON.stringify(formData)
         });
 
-        if (!response.ok) {
-            // Try parsing JSON from server error
-            const errorData = await response.json().catch(() => ({}));
-            throw new Error(errorData.message || 'Failed to send message.');
+        // Parse response once
+        const data = await response.json().catch(() => ({}));
+
+        // Handle errors
+        if (!response.ok || !data.success) {
+            throw new Error(data.message || 'Failed to send message.');
         }
 
-        const data = await response.json();
+        // Success
+        showToast(data.message || 'Message sent successfully!', 'success');
+        contactForm.reset();
 
-        if (data.success) {
-            showToast(data.message || 'Message sent successfully!', 'success');
-            contactForm.reset();
-        } else {
-            showToast(data.message || 'Failed to send message.', 'error');
-        }
     } catch (err) {
         console.error('Error submitting contact form:', err);
         showToast(err.message || 'An error occurred. Please try again.', 'error');
