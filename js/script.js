@@ -1,97 +1,73 @@
-// ---------------------------
-// Robust Script for EME Frontend
-// ---------------------------
-
+// script.js
 document.addEventListener('DOMContentLoaded', () => {
-    // ---------------------------
-    // Mobile Menu Toggle
-    // ---------------------------
-    const menuToggle = document.getElementById('menuToggle');
-    const navLinks = document.getElementById('navLinks');
+  const contactForm = document.getElementById('contactForm');
+  const formMessage = document.getElementById('formMessage');
 
-    if (menuToggle && navLinks) {
-        menuToggle.addEventListener('click', () => {
-            navLinks.classList.toggle('active');
-            menuToggle.classList.toggle('active');
-        });
+  // Show toast notification
+  function showToast(message, type = 'success') {
+    if (!formMessage) return;
 
-        navLinks.querySelectorAll('a').forEach(link => {
-            link.addEventListener('click', () => {
-                navLinks.classList.remove('active');
-                menuToggle.classList.remove('active');
-            });
-        });
+    formMessage.textContent = message;
+    formMessage.className = `form-message ${type}`;
+    formMessage.style.display = 'block';
+
+    // Hide after 7 seconds
+    setTimeout(() => {
+      formMessage.style.display = 'none';
+    }, 7000);
+  }
+
+  if (!contactForm) return;
+
+  contactForm.addEventListener('submit', async (e) => {
+    e.preventDefault();
+
+    // Gather form data
+    const formData = {
+      name: contactForm.name?.value.trim() || '',
+      email: contactForm.email?.value.trim() || '',
+      phone: contactForm.phone?.value.trim() || '',
+      service: contactForm.service?.value || '',
+      message: contactForm.message?.value.trim() || ''
+    };
+
+    // Validate required fields
+    if (!formData.name || !formData.email || !formData.service || !formData.message) {
+      showToast('Please fill all required fields.', 'error');
+      return;
     }
 
-    // ---------------------------
-    // Contact Form Submission
-    // ---------------------------
-    const contactForm = document.getElementById('contactForm');
-    const formMessage = document.getElementById('formMessage');
+    // Disable submit button while sending
+    const submitButton = contactForm.querySelector('button[type="submit"]');
+    if (submitButton) submitButton.disabled = true;
 
-    function showToast(message, type = 'success') {
-        if (!formMessage) return;
-        formMessage.textContent = message;
-        formMessage.className = `form-message ${type}`;
-        formMessage.style.display = 'block';
+    try {
+      const response = await fetch('https://eme-backend-3dw0.onrender.com/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(formData),
+      });
 
-        setTimeout(() => {
-            formMessage.style.display = 'none';
-        }, 7000); // show for 7 seconds
+      let data;
+      try {
+        data = await response.json();
+      } catch {
+        data = {};
+      }
+
+      if (!response.ok) {
+        throw new Error(data?.message || `Failed to send message (status ${response.status})`);
+      }
+
+      // Success notification
+      showToast(data.message || 'Message sent successfully!', 'success');
+      contactForm.reset();
+
+    } catch (err) {
+      console.error('Error submitting contact form:', err);
+      showToast(err.message || 'An error occurred. Please try again later.', 'error');
+    } finally {
+      if (submitButton) submitButton.disabled = false;
     }
-
-    if (contactForm) {
-        contactForm.addEventListener('submit', async (e) => {
-            e.preventDefault();
-
-            const formData = {
-                name: contactForm.name?.value.trim() || '',
-                email: contactForm.email?.value.trim() || '',
-                phone: contactForm.phone?.value.trim() || '',
-                service: contactForm.service?.value || '',
-                message: contactForm.message?.value.trim() || ''
-            };
-
-            if (!formData.name || !formData.email || !formData.service || !formData.message) {
-                showToast('Please fill in all required fields.', 'error');
-                return;
-            }
-
-            // Disable submit while sending
-            const submitButton = contactForm.querySelector('button[type="submit"]');
-            if (submitButton) submitButton.disabled = true;
-
-            try {
-                const response = await fetch('https://eme-backend-3dw0.onrender.com/api/contact', {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify(formData)
-                });
-
-                let data;
-                try {
-                    data = await response.json();
-                } catch {
-                    data = {};
-                }
-
-                if (!response.ok) {
-                    // Show backend error if present
-                    const message = data?.message || `Failed to send message (status ${response.status}).`;
-                    throw new Error(message);
-                }
-
-                // Success
-                showToast(data.message || 'Message sent successfully!', 'success');
-                contactForm.reset();
-
-            } catch (err) {
-                console.error('Error submitting contact form:', err);
-                // Show detailed backend error for SMTP issues
-                showToast(err.message || 'An error occurred. Please try again later.', 'error');
-            } finally {
-                if (submitButton) submitButton.disabled = false;
-            }
-        });
-    }
+  });
 });
