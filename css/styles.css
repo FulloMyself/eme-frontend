@@ -171,7 +171,6 @@ nav.scrolled {
     0% {
         transform: translate(0, 0);
     }
-
     100% {
         transform: translate(50px, 50px);
     }
@@ -208,7 +207,6 @@ nav.scrolled {
         opacity: 0;
         transform: translateY(30px);
     }
-
     to {
         opacity: 1;
         transform: translateY(0);
@@ -278,7 +276,7 @@ section {
 }
 
 /* =====================
-   Services
+   Services Section
    ===================== */
 .services-section {
     background: white;
@@ -345,7 +343,7 @@ section {
 }
 
 /* =====================
-   Portfolio Full Section
+   Portfolio Section
    ===================== */
 .portfolio-full-section {
     background: var(--light);
@@ -486,6 +484,17 @@ section {
     font-style: italic;
     color: var(--gray);
     margin-bottom: 2rem;
+}
+
+.validation-box {
+    background: white;
+    border-left: 5px solid var(--primary);
+    padding: 1rem 1.5rem;
+    border-radius: 10px;
+}
+
+.validation-items div {
+    margin: 0.3rem 0;
 }
 
 /* =====================
@@ -655,7 +664,7 @@ footer {
     background: #f56565;
 }
 
-/* ===== Modal Styles (Branded) ===== */
+
 .modal {
   display: none;
   position: fixed;
@@ -666,7 +675,13 @@ footer {
   height: 100%;
   overflow-y: auto;
   background: rgba(0, 0, 0, 0.85);
-  animation: fadeIn 0.3s ease;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.modal.show {
+  display: block;
+  visibility: visible;
+  opacity: 1;
 }
 
 .modal-content {
@@ -701,7 +716,7 @@ footer {
   font-size: 2rem;
   margin-bottom: 0.5rem;
   color: #222;
-  border-bottom: 3px solid #0077b6; /* Primary brand accent */
+  border-bottom: 3px solid #0077b6;
   display: inline-block;
   padding-bottom: 4px;
 }
@@ -752,7 +767,6 @@ footer {
   background: #005f86;
 }
 
-/* Animations */
 @keyframes fadeIn {
   from { opacity: 0; }
   to { opacity: 1; }
@@ -762,9 +776,6 @@ footer {
   from { transform: translateY(40px); opacity: 0; }
   to { transform: translateY(0); opacity: 1; }
 }
-
-
-
 
 /* =====================
    Responsive
@@ -813,5 +824,29 @@ footer {
 
     .project-grid {
         grid-template-columns: 1fr;
+    }
+
+    .modal-content {
+        width: 92%;
+        margin: 10% auto;
+        padding: 1.5rem;
+        border-radius: 12px;
+    }
+
+    .profile-container h2 {
+        font-size: 1.6rem;
+    }
+
+    .profile-container h3 {
+        font-size: 1.1rem;
+    }
+
+    .modal .close {
+        font-size: 1.8rem;
+    }
+
+    .modal-actions .btn-primary {
+        width: 100%;
+        padding: 0.9rem;
     }
 }
