@@ -101,10 +101,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // Close when clicking outside modal content
   window.addEventListener("click", (e) => {
-    if (e.target === modal) {
-      modal.classList.remove("show");
+    if (e.target.classList.contains("modal")) {
+      e.target.classList.remove("show");
     }
   });
+
 
   // ✅ Direct PDF Download
   if (downloadBtn) {
