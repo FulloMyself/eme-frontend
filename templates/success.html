@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>CV Generated — EME</title>
+<link rel="stylesheet" href="css/styles.css" />
+<link rel="stylesheet" href="css/cv-maker.css" />
+</head>
+<body style="background: var(--ink);">
+  <div style="max-width: 600px; margin: 8rem auto; text-align: center; padding: 2rem;">
+    <div class="review-preview">
+      <div class="preview-header">
+        <span class="preview-label">CV GENERATION COMPLETE</span>
+      </div>
+      <div class="preview-content" style="background: var(--paper);">
+        <svg width="80" height="80" viewBox="0 0 80 80" fill="none" style="margin: 0 auto 1.5rem;">
+          <circle cx="40" cy="40" r="35" stroke="#22c55e" stroke-width="2"/>
+          <path d="M25 40L36 51L55 29" stroke="#22c55e" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        <h2 style="color: var(--ink-text); margin-bottom: 1rem;">Success! Your CV is Ready</h2>
+        <p style="color: var(--graphite); margin-bottom: 2rem;">
+          Hi <strong>{{ user_name }}</strong>, your ATS-compliant CV has been generated and is ready for download.
+        </p>
+        <a href="{{ url_for('download_cv', filename=cv_filename) }}" class="btn btn-primary">
+          Download CV (PDF)
+        </a>
+        <p style="color: var(--graphite); margin-top: 2rem; font-size: 0.85rem;">
+          Your documents have been saved. Reference ID: <strong style="color: var(--signal);">#{{ user_id }}</strong>
+        </p>
+        <a href="/" style="color: var(--signal); font-family: var(--mono); font-size: 0.8rem; display: inline-block; margin-top: 1rem;">← Back to EME</a>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

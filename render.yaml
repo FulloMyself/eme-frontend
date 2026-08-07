@@ -1,0 +1,11 @@
+@"
+services:
+  - type: web
+    name: eme4you
+    env: python
+    buildCommand: pip install -r requirements.txt
+    startCommand: python app.py
+    envVars:
+      - key: SECRET_KEY
+        value: eme4you-cv-bot-2024
+"@ | Out-File -FilePath render.yaml -Encoding UTF8

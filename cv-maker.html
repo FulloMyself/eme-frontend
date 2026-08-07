@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>EME CV Maker — ATS-Compliant CV Generator</title>
+<meta name="description" content="Create professional ATS-compliant CVs with EME's intelligent CV maker. Upload documents, fill your details, and export as PDF." />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+<link rel="stylesheet" href="css/styles.css" />
+<link rel="stylesheet" href="css/cv-maker.css" />
+</head>
+<body>
+
+<header class="site-nav">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-mark">
+      <img src="assets/eme-logo.png" alt="EME" class="nav-logo" onerror="this.style.display='none'; this.parentElement.classList.add('nav-mark-fallback');">
+      <span class="nav-logo-fallback">
+        <span class="dot"></span>EME
+      </span>
+    </a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="index.html#services">Services</a></li>
+      <li><a href="index.html#work">Work</a></li>
+      <li><a href="cv-maker.html" class="nav-featured">CV Maker</a></li>
+      <li><a href="index.html#contact">Contact</a></li>
+    </ul>
+    <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<section class="cv-maker-hero">
+  <div class="wrap">
+    <div class="cv-hero-grid">
+      <div class="cv-hero-content">
+        <p class="eyebrow">CV MAKER — SPEC CV-01</p>
+        <h1>Build your ATS-compliant CV</h1>
+        <p class="lead">Fill in the form below and we'll generate a professional CV formatted to pass Applicant Tracking Systems. Upload your certified documents and download everything as a PDF.</p>
+      </div>
+      <div class="cv-hero-visual">
+        <svg width="200" height="200" viewBox="0 0 200 200" fill="none">
+          <rect x="30" y="20" width="140" height="160" rx="4" stroke="#E0672B" stroke-width="1.5"/>
+          <line x1="50" y1="50" x2="150" y2="50" stroke="#9FB0C6" stroke-width="1"/>
+          <line x1="50" y1="70" x2="120" y2="70" stroke="#9FB0C6" stroke-width="1"/>
+          <rect x="50" y="90" width="100" height="60" rx="2" stroke="#28405F" stroke-width="1"/>
+          <path d="M90 170L100 180L110 170" stroke="#22c55e" stroke-width="2" stroke-linecap="round"/>
+          <circle cx="130" cy="30" r="15" stroke="#22c55e" stroke-width="1.5"/>
+          <path d="M124 30L128 34L136 26" stroke="#22c55e" stroke-width="1.5" stroke-linecap="round"/>
+        </svg>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="cv-form-section">
+  <div class="wrap">
+    <div class="cv-progress">
+      <div class="progress-step active" data-step="1">
+        <div class="step-number">01</div>
+        <div class="step-label">Personal Info</div>
+      </div>
+      <div class="progress-line"></div>
+      <div class="progress-step" data-step="2">
+        <div class="step-number">02</div>
+        <div class="step-label">Experience</div>
+      </div>
+      <div class="progress-line"></div>
+      <div class="progress-step" data-step="3">
+        <div class="step-number">03</div>
+        <div class="step-label">Education</div>
+      </div>
+      <div class="progress-line"></div>
+      <div class="progress-step" data-step="4">
+        <div class="step-number">04</div>
+        <div class="step-label">Documents</div>
+      </div>
+      <div class="progress-line"></div>
+      <div class="progress-step" data-step="5">
+        <div class="step-number">05</div>
+        <div class="step-label">Review</div>
+      </div>
+    </div>
+
+    <form id="cvForm" class="cv-form" enctype="multipart/form-data">
+      <!-- Step 1: Personal Information -->
+      <div class="form-step active" data-step="1">
+        <div class="form-section-header">
+          <h2>Personal Information</h2>
+          <p>This information will appear at the top of your CV.</p>
+        </div>
+        
+        <div class="cv-field-row">
+          <div class="cv-field">
+            <label for="fullName">Full Name *</label>
+            <input type="text" id="fullName" name="fullName" required placeholder="John Doe">
+          </div>
+          <div class="cv-field">
+            <label for="email">Email Address *</label>
+            <input type="email" id="email" name="email" required placeholder="john@example.com">
+          </div>
+        </div>
+        
+        <div class="cv-field-row">
+          <div class="cv-field">
+            <label for="phone">Phone Number *</label>
+            <input type="tel" id="phone" name="phone" required placeholder="+27 123 456 789">
+          </div>
+          <div class="cv-field">
+            <label for="location">Location</label>
+            <input type="text" id="location" name="location" placeholder="Johannesburg, Gauteng">
+          </div>
+        </div>
+        
+        <div class="cv-field">
+          <label for="professionalSummary">Professional Summary</label>
+          <textarea id="professionalSummary" name="professionalSummary" rows="4" placeholder="Brief overview of your professional background and career goals..."></textarea>
+        </div>
+        
+        <div class="cv-field-row">
+          <div class="cv-field">
+            <label for="linkedin">LinkedIn Profile</label>
+            <input type="url" id="linkedin" name="linkedin" placeholder="https://linkedin.com/in/yourprofile">
+          </div>
+          <div class="cv-field">
+            <label for="portfolio">Portfolio Website</label>
+            <input type="url" id="portfolio" name="portfolio" placeholder="https://yourportfolio.com">
+          </div>
+        </div>
+      </div>
+
+      <!-- Step 2: Work Experience -->
+      <div class="form-step" data-step="2">
+        <div class="form-section-header">
+          <h2>Work Experience</h2>
+          <p>Add your work history. Start with your most recent position.</p>
+        </div>
+        
+        <div id="experienceContainer">
+          <div class="experience-entry">
+            <div class="entry-header">
+              <span class="entry-number">01</span>
+              <button type="button" class="btn-remove-entry" title="Remove">×</button>
+            </div>
+            
+            <div class="cv-field-row">
+              <div class="cv-field">
+                <label>Job Title *</label>
+                <input type="text" name="jobTitle[]" required placeholder="Software Developer">
+              </div>
+              <div class="cv-field">
+                <label>Company *</label>
+                <input type="text" name="company[]" required placeholder="Tech Corp Ltd">
+              </div>
+            </div>
+            
+            <div class="cv-field-row">
+              <div class="cv-field">
+                <label>Start Date *</label>
+                <input type="month" name="startDate[]" required>
+              </div>
+              <div class="cv-field">
+                <label>End Date</label>
+                <input type="month" name="endDate[]" placeholder="Present">
+              </div>
+            </div>
+            
+            <div class="cv-field">
+              <label>Responsibilities & Achievements</label>
+              <textarea name="responsibilities[]" rows="3" placeholder="• Led development of...&#10;• Improved system performance by...&#10;• Managed team of..."></textarea>
+            </div>
+          </div>
+        </div>
+        
+        <button type="button" id="addExperience" class="btn btn-outline on-dark">
+          + Add Another Position
+        </button>
+      </div>
+
+      <!-- Step 3: Education -->
+      <div class="form-step" data-step="3">
+        <div class="form-section-header">
+          <h2>Education & Qualifications</h2>
+          <p>Add your academic background and certifications.</p>
+        </div>
+        
+        <div id="educationContainer">
+          <div class="education-entry">
+            <div class="entry-header">
+              <span class="entry-number">01</span>
+              <button type="button" class="btn-remove-entry" title="Remove">×</button>
+            </div>
+            
+            <div class="cv-field-row">
+              <div class="cv-field">
+                <label>Qualification *</label>
+                <input type="text" name="qualification[]" required placeholder="Bachelor of Science in Computer Science">
+              </div>
+              <div class="cv-field">
+                <label>Institution *</label>
+                <input type="text" name="institution[]" required placeholder="University of Technology">
+              </div>
+            </div>
+            
+            <div class="cv-field">
+              <label>Year Completed</label>
+              <input type="text" name="yearCompleted[]" placeholder="2020">
+            </div>
+          </div>
+        </div>
+        
+        <button type="button" id="addEducation" class="btn btn-outline on-dark">
+          + Add Another Qualification
+        </button>
+        
+        <div class="form-section-header" style="margin-top: 2rem;">
+          <h3>Skills</h3>
+          <p>List your key skills separated by commas.</p>
+        </div>
+        
+        <div class="cv-field">
+          <label>Technical Skills</label>
+          <textarea name="technicalSkills" rows="2" placeholder="Python, JavaScript, React, Node.js, SQL, AWS"></textarea>
+        </div>
+        
+        <div class="cv-field">
+          <label>Soft Skills</label>
+          <textarea name="softSkills" rows="2" placeholder="Leadership, Communication, Problem-solving, Team management"></textarea>
+        </div>
+      </div>
+
+      <!-- Step 4: Document Upload -->
+      <div class="form-step" data-step="4">
+        <div class="form-section-header">
+          <h2>Required Documents</h2>
+          <p>Upload your certified documents. Accepted formats: PDF, JPG, PNG (max 5MB each).</p>
+        </div>
+        
+        <div class="upload-grid">
+          <div class="upload-zone">
+            <div class="upload-icon">
+              <svg width="48" height="48" viewBox="0 0 48 48" fill="none">
+                <rect x="10" y="12" width="28" height="28" rx="3" stroke="#E0672B" stroke-width="1.5"/>
+                <circle cx="24" cy="24" r="8" stroke="#E0672B" stroke-width="1.5"/>
+                <circle cx="24" cy="24" r="3" fill="#E0672B" opacity="0.3"/>
+              </svg>
+            </div>
+            <h3>Certified ID</h3>
+            <p>Upload a clear copy of your certified ID document</p>
+            <input type="file" id="certifiedId" name="certifiedId" accept=".pdf,.jpg,.jpeg,.png" class="file-input">
+            <label for="certifiedId" class="btn btn-outline on-dark">Choose File</label>
+            <span class="file-name" id="certifiedIdName">No file chosen</span>
+          </div>
+          
+          <div class="upload-zone">
+            <div class="upload-icon">
+              <svg width="48" height="48" viewBox="0 0 48 48" fill="none">
+                <path d="M14 6H30L38 14V42H14V6Z" stroke="#E0672B" stroke-width="1.5"/>
+                <path d="M30 6V14H38" stroke="#E0672B" stroke-width="1.5"/>
+                <line x1="20" y1="28" x2="28" y2="28" stroke="#E0672B" stroke-width="1.5"/>
+                <line x1="20" y1="32" x2="24" y2="32" stroke="#E0672B" stroke-width="1.5"/>
+              </svg>
+            </div>
+            <h3>Proof of Residence</h3>
+            <p>Upload a document showing your current residential address</p>
+            <input type="file" id="proofOfResidence" name="proofOfResidence" accept=".pdf,.jpg,.jpeg,.png" class="file-input">
+            <label for="proofOfResidence" class="btn btn-outline on-dark">Choose File</label>
+            <span class="file-name" id="proofOfResidenceName">No file chosen</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Step 5: Review & Generate -->
+      <div class="form-step" data-step="5">
+        <div class="form-section-header">
+          <h2>Review & Generate CV</h2>
+          <p>Review your information before generating your CV. You can go back to any step to make changes.</p>
+        </div>
+        
+        <div class="review-preview">
+          <div class="preview-header">
+            <span class="preview-label">CV PREVIEW</span>
+          </div>
+          <div class="preview-content" id="cvPreview">
+            <p class="preview-placeholder">Your CV preview will appear here. Complete all required fields in the previous steps.</p>
+          </div>
+        </div>
+        
+        <div class="form-actions">
+          <button type="button" id="prevStep" class="btn btn-outline on-dark">← Previous</button>
+          <button type="button" id="submitCV" class="btn btn-primary">
+    Next →
+            Generate CV
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+              <path d="M3 8H13M10 5L13 8L10 11" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </button>
+        </div>
+      </div>
+    </form>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="titleblock">
+      <div class="tb-col">
+        <h4>EME</h4>
+        <p>Established Media & Enterprises</p>
+        <p>Everything Made Easier</p>
+        <p>Reg. 2022/414835/07</p>
+        <div class="footer-logo">
+          <svg class="footer-logo-svg" width="100" height="40" viewBox="0 0 100 40" fill="none">
+            <rect x="1" y="5" width="28" height="28" rx="3" stroke="#E0672B" stroke-width="1.5" opacity="0.7"/>
+            <path d="M7 12H23M7 19H23M7 26H23" stroke="white" stroke-width="1.8" stroke-linecap="round" opacity="0.7"/>
+            <circle cx="15" cy="19" r="3.5" fill="#E0672B" opacity="0.7"/>
+            <text x="36" y="26" font-family="'IBM Plex Mono', monospace" font-size="18" font-weight="700" fill="white" opacity="0.7" letter-spacing="2">EME</text>
+          </svg>
+        </div>
+      </div>
+      <div class="tb-col">
+        <h4>Navigate</h4>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="cv-maker.html">CV Maker</a></li>
+          <li><a href="index.html#services">Services</a></li>
+          <li><a href="index.html#contact">Contact</a></li>
+        </ul>
+      </div>
+      <div class="tb-col">
+        <h4>Tools</h4>
+        <ul>
+          <li><a href="cv-maker.html">CV Generator</a></li>
+          <li><a href="index.html#services">Business Registration</a></li>
+          <li><a href="index.html#services">Website Design</a></li>
+        </ul>
+      </div>
+      <div class="tb-col">
+        <h4>Contact</h4>
+        <ul>
+          <li><a href="tel:0632462802">063 246 2802</a></li>
+          <li><a href="mailto:info@eme4you.co.za">info@eme4you.co.za</a></li>
+          <li><a href="http://www.eme4you.co.za">www.eme4you.co.za</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="tb-bottom">
+      <span>© <span class="current-year">2026</span> ESTABLISHED MEDIA & ENTERPRISES</span>
+      <span>DRAWN BY EME · VEREENIGING, GAUTENG</span>
+    </div>
+  </div>
+</footer>
+
+<script src="js/cv-maker.js"></script>
+</body>
+</html>

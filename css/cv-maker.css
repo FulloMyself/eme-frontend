@@ -1,0 +1,455 @@
+/* =========================================================
+   CV MAKER PAGE STYLES
+   ========================================================= */
+
+/* Hero Section */
+.cv-maker-hero {
+  background: var(--ink);
+  padding: 8rem 0 4rem;
+  border-bottom: 1px solid var(--line-soft);
+  position: relative;
+  overflow: hidden;
+}
+
+.cv-maker-hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(var(--line-soft) 1px, transparent 1px),
+    linear-gradient(90deg, var(--line-soft) 1px, transparent 1px);
+  background-size: 56px 56px;
+  opacity: 0.3;
+  mask-image: radial-gradient(ellipse 80% 60% at 50% 30%, black 40%, transparent 90%);
+}
+
+.cv-hero-grid {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 3rem;
+  align-items: center;
+  position: relative;
+}
+
+.cv-hero-content h1 {
+  color: var(--white);
+  font-size: clamp(2rem, 4vw, 3rem);
+  margin-bottom: 1rem;
+}
+
+.cv-hero-content .lead {
+  color: var(--mist);
+  font-size: 1.05rem;
+  max-width: 50ch;
+}
+
+.cv-hero-visual {
+  flex-shrink: 0;
+}
+
+/* Progress Bar */
+.cv-progress {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0;
+  margin: 3rem 0;
+  padding: 2rem;
+  background: var(--ink-2);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+}
+
+.progress-step {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.step-number {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: var(--ink);
+  border: 2px solid var(--line);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--mono);
+  font-size: 0.8rem;
+  color: var(--mist);
+  transition: all 0.3s ease;
+}
+
+.progress-step.active .step-number {
+  background: var(--signal);
+  border-color: var(--signal);
+  color: var(--white);
+}
+
+.progress-step.completed .step-number {
+  background: var(--ink-2);
+  border-color: #22c55e;
+  color: #22c55e;
+}
+
+.step-label {
+  font-family: var(--mono);
+  font-size: 0.65rem;
+  color: var(--mist);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.progress-step.active .step-label {
+  color: var(--signal);
+}
+
+.progress-line {
+  width: 40px;
+  height: 2px;
+  background: var(--line);
+  margin: 0 0.5rem;
+  margin-bottom: 1.5rem;
+}
+
+/* Form Section */
+.cv-form-section {
+  background: var(--ink);
+  padding: 2rem 0 6rem;
+  min-height: 60vh;
+}
+
+.form-step {
+  display: none;
+}
+
+.form-step.active {
+  display: block;
+  animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.form-section-header {
+  margin-bottom: 2rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid var(--line-soft);
+}
+
+.form-section-header h2 {
+  color: var(--white);
+  font-size: 1.6rem;
+  margin-bottom: 0.5rem;
+}
+
+.form-section-header h3 {
+  color: var(--white);
+  font-size: 1.2rem;
+  margin-bottom: 0.5rem;
+}
+
+.form-section-header p {
+  color: var(--mist);
+  font-size: 0.9rem;
+}
+
+/* CV Form Fields */
+.cv-form {
+  max-width: 900px;
+  margin: 0 auto;
+  background: var(--ink-2);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 2.5rem;
+}
+
+.cv-field-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.cv-field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.cv-field label {
+  font-family: var(--mono);
+  font-size: 0.7rem;
+  color: var(--mist);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.cv-field input,
+.cv-field textarea,
+.cv-field select {
+  background: var(--ink);
+  border: 1px solid var(--line);
+  color: var(--white);
+  padding: 0.8rem 1rem;
+  font-family: var(--body);
+  font-size: 0.9rem;
+  border-radius: var(--radius);
+  transition: border-color 0.2s ease;
+}
+
+.cv-field input:focus,
+.cv-field textarea:focus,
+.cv-field select:focus {
+  border-color: var(--signal);
+  outline: none;
+}
+
+.cv-field input::placeholder,
+.cv-field textarea::placeholder {
+  color: var(--graphite);
+}
+
+/* Experience & Education Entries */
+.experience-entry,
+.education-entry {
+  background: var(--ink);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 1.5rem;
+  margin-bottom: 1.5rem;
+  position: relative;
+}
+
+.entry-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.2rem;
+}
+
+.entry-number {
+  font-family: var(--mono);
+  font-size: 0.75rem;
+  color: var(--signal);
+  letter-spacing: 0.05em;
+}
+
+.btn-remove-entry {
+  background: none;
+  border: 1px solid var(--line);
+  color: var(--mist);
+  width: 28px;
+  height: 28px;
+  border-radius: var(--radius);
+  cursor: pointer;
+  font-size: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+}
+
+.btn-remove-entry:hover {
+  border-color: #ef4444;
+  color: #ef4444;
+}
+
+/* Upload Zones */
+.upload-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+}
+
+.upload-zone {
+  background: var(--ink);
+  border: 2px dashed var(--line);
+  border-radius: var(--radius);
+  padding: 2rem;
+  text-align: center;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.upload-zone:hover {
+  border-color: var(--signal);
+  background: rgba(224, 103, 43, 0.05);
+}
+
+.upload-icon {
+  margin-bottom: 1rem;
+}
+
+.upload-zone h3 {
+  color: var(--white);
+  font-size: 1rem;
+  margin-bottom: 0.5rem;
+}
+
+.upload-zone p {
+  color: var(--mist);
+  font-size: 0.8rem;
+  margin-bottom: 1.2rem;
+}
+
+.file-input {
+  display: none;
+}
+
+.file-name {
+  display: block;
+  font-family: var(--mono);
+  font-size: 0.7rem;
+  color: var(--signal);
+  margin-top: 0.8rem;
+}
+
+/* Review Preview */
+.review-preview {
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  overflow: hidden;
+  margin-bottom: 2rem;
+}
+
+.preview-header {
+  background: var(--ink);
+  padding: 0.8rem 1.5rem;
+  border-bottom: 1px solid var(--line);
+}
+
+.preview-label {
+  font-family: var(--mono);
+  font-size: 0.7rem;
+  color: var(--signal);
+  letter-spacing: 0.05em;
+}
+
+.preview-content {
+  padding: 2rem;
+  background: white;
+  min-height: 300px;
+  color: #333;
+}
+
+.preview-placeholder {
+  color: #999;
+  text-align: center;
+  padding: 3rem;
+  font-style: italic;
+}
+
+/* Form Actions */
+.form-actions {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 2rem;
+  padding-top: 2rem;
+  border-top: 1px solid var(--line-soft);
+}
+
+/* CV Promo Section (Homepage) */
+.cv-promo {
+  background: var(--ink);
+  border-top: 1px solid var(--line-soft);
+  border-bottom: 1px solid var(--line-soft);
+}
+
+.cv-feature-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.5rem;
+  margin-bottom: 3rem;
+}
+
+.cv-feature-card {
+  background: var(--ink-2);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 2rem;
+  text-align: center;
+  transition: all 0.3s ease;
+}
+
+.cv-feature-card:hover {
+  border-color: var(--signal);
+  transform: translateY(-2px);
+}
+
+.cv-feature-icon {
+  margin-bottom: 1.2rem;
+  display: flex;
+  justify-content: center;
+}
+
+.cv-feature-card h3 {
+  color: var(--white);
+  font-size: 1.1rem;
+  margin-bottom: 0.8rem;
+}
+
+.cv-feature-card p {
+  color: var(--mist);
+  font-size: 0.85rem;
+  line-height: 1.5;
+}
+
+.cv-cta {
+  text-align: center;
+}
+
+.cv-cta .btn {
+  font-size: 1rem;
+  padding: 1rem 2rem;
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .cv-feature-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  .upload-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 768px) {
+  .cv-hero-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .cv-hero-visual {
+    display: none;
+  }
+  
+  .cv-field-row {
+    grid-template-columns: 1fr;
+  }
+  
+  .cv-progress {
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+  
+  .progress-line {
+    display: none;
+  }
+  
+  .cv-feature-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .cv-form {
+    padding: 1.5rem;
+  }
+}

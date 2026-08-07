@@ -1,363 +1,825 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>EME - Established Media & Enterprises | Everything's Made Easier</title>
-    <meta name="description"
-        content="One-stop SME enablement partner. From company registration to website design and tech support." />
-    <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
-    <link rel="stylesheet" href="css/styles.css" />
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>EME — Established Media & Enterprises | Everything Made Easier</title>
+<meta name="description" content="EME is a Gauteng-based SME enablement partner: business registration, compliant websites, and tech support, built to spec." />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+<link rel="stylesheet" href="css/styles.css" />
 </head>
-
 <body>
-    <!-- Navigation -->
-    <nav id="navbar">
-        <div class="nav-container">
-            <div class="logo">EME</div>
-            <ul class="nav-links" id="navLinks">
-                <li><a href="#home">Home</a></li>
-                <li><a href="#services">Services</a></li>
-                <li><a href="#portfolio-full">Portfolio</a></li>
-                <li><a href="#about">About</a></li>
-                <li><a href="#contact" class="cta-btn">Contact</a></li>
-                <li><a href="#" id="openProfile" class="cta-btn">📄 Business Profile</a></li>
-            </ul>
-            <div class="menu-toggle" id="menuToggle">
-                <span></span>
-                <span></span>
-                <span></span>
-            </div>
+
+<header class="site-nav">
+  <div class="nav-inner">
+    <a href="#home" class="nav-mark">
+      <img src="assets/eme-logo.png" alt="EME" class="nav-logo" onerror="this.style.display='none'; this.parentElement.classList.add('nav-mark-fallback');">
+      <span class="nav-logo-fallback">
+        <span class="dot"></span>EME
+      </span>
+    </a>
+    <ul class="nav-links" id="navLinks">
+  <li><a href="#home">Home</a></li>
+  <li><a href="#services">Services</a></li>
+  <li><a href="#capabilities">Capabilities</a></li>
+  <li><a href="#work">Work</a></li>
+  <li><a href="cv-maker.html" class="nav-featured">CV Maker</a></li>
+  <li><a href="#docs">Docs</a></li>
+  <li><a href="#about">About</a></li>
+  <li><a href="#contact">Contact</a></li>
+  <li><a href="#" id="openProfile" class="nav-cta">Profile ↓</a></li>
+</ul>
+    <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<section class="hero" id="home">
+  <div class="hero-bg-pattern"></div>
+  <div class="hero-inner">
+    <div class="hero-grid">
+      <div class="hero-content">
+        <p class="eyebrow">REG. 2022/414835/07 — GAUTENG, South Africa</p>
+        <h1>We build the parts of your business that need to work.</h1>
+        <p class="lead">EME registers, builds, and supports South African SMEs — from CIPC paperwork to the website your customers actually use. One partner, drawn to spec.</p>
+        <div class="hero-buttons">
+          <a href="#contact" class="btn btn-primary">Start a project</a>
+          <a href="#services" class="btn btn-outline">See what we build</a>
+          <a href="#" id="openProfileHero" class="btn btn-outline">Download profile</a>
         </div>
-    </nav>
-
-    <!-- Hero Section -->
-    <section class="hero" id="home">
-        <div class="hero-content">
-            <h1>Established Media & Enterprises</h1>
-            <p class="tagline">Everything's Made Easier</p>
-            <p>Your one-stop partner transforming SMEs from idea to operation, and from survival to success.</p>
-            <div class="hero-buttons">
-                <a href="#contact" class="btn-primary">Start Your Journey</a>
-                <a href="#services" class="btn-secondary">Explore Services</a>
-                <a href="#" id="openProfileHero" class="btn-secondary">📄 View Profile</a>
-            </div>
-        </div>
-    </section>
-
-    <!-- Services Section -->
-    <section class="services-section" id="services">
-        <h2 class="section-title">Complete Business Solutions</h2>
-        <p class="section-subtitle">Everything you need under one roof</p>
-        <div class="services-grid">
-            <div class="service-card">
-                <h3>Business Formation</h3>
-                <p>Get your business registered and compliant in 5-7 days</p>
-                <ul>
-                    <li>CIPC Registration</li>
-                    <li>Tax Compliance</li>
-                    <li>Beneficial Ownership</li>
-                    <li>South African Central Supplier Database Registration</li>
-                </ul>
-            </div>
-            <div class="service-card">
-                <h3>Digital Presence</h3>
-                <p>Professional online presence that attracts customers</p>
-                <ul>
-                    <li>Website Design & Development</li>
-                    <li>Logo & Graphic Design</li>
-                    <li>Social Media Setup</li>
-                    <li>Content Creation</li>
-                </ul>
-            </div>
-            <div class="service-card">
-                <h3>Tech Support</h3>
-                <p>Keep your business running with reliable technical support</p>
-                <ul>
-                    <li>Computer Repairs</li>
-                    <li>Printer Maintenance</li>
-                    <li>24hr Turnaround</li>
-                    <li>Ongoing Support</li>
-                </ul>
-            </div>
-            <div class="service-card">
-                <h3>Ongoing Partnership</h3>
-                <p>Long-term support for sustainable growth</p>
-                <ul>
-                    <li>Monthly Retainers</li>
-                    <li>Website Maintenance</li>
-                    <li>Business Consultation</li>
-                    <li>Growth Strategy</li>
-                </ul>
-            </div>
-        </div>
-        <div class="value-prop">
-            <h2>Save 60% Time • Reduce 40% Costs • Achieve 98% Success Rate</h2>
-        </div>
-    </section>
-
-    <!-- Portfolio Section -->
-    <section class="portfolio-full-section" id="portfolio-full">
-        <div class="container">
-            <!-- Portfolio Project 1 -->
-            <div class="project">
-                <div class="project-header">
-                    <h2 class="project-title">Korundum Lodge</h2>
-                    <p class="project-subtitle">Complete digital transformation with professional website and booking
-                        system</p>
-                </div>
-                <div class="project-content">
-                    <div class="project-grid">
-                        <div class="project-details">
-                            <div class="detail-item">
-                                <span class="detail-label">Category</span>
-                                <span class="detail-value">Hospitality / Accommodation</span>
-                            </div>
-                            <div class="detail-item">
-                                <span class="detail-label">Website</span>
-                                <a href="https://korundum.co.za" target="_blank"
-                                    class="website-link">korundum.co.za</a>
-                            </div>
-                            <div class="detail-item">
-                                <span class="detail-label">Technologies</span>
-                                <div class="features-list">
-                                    <span class="feature">HTML</span>
-                                    <span class="feature">CSS</span>
-                                    <span class="feature">JavaScript</span>
-                                    <span class="feature">Booking System</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="screenshot-gallery">
-                            <div class="screenshot-container">
-                                <img src="screenshots/korundum-homepage.jpg" alt="Korundum Lodge Screenshot 1">
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Portfolio Project 2 -->
-            <div class="project">
-                <div class="project-header">
-                    <h2 class="project-title">Tassel Group</h2>
-                    <p class="project-subtitle">Full e-commerce solution with online shop and booking system</p>
-                </div>
-                <div class="project-content">
-                    <div class="project-grid">
-                        <div class="project-details">
-                            <div class="detail-item">
-                                <span class="detail-label">Category</span>
-                                <span class="detail-value">E-commerce / Retail</span>
-                            </div>
-                            <div class="detail-item">
-                                <span class="detail-label">Website</span>
-                                <a href="https://tasselgroup.co.za" target="_blank"
-                                    class="website-link">tasselgroup.co.za</a>
-                            </div>
-                            <div class="detail-item">
-                                <span class="detail-label">Technologies</span>
-                                <div class="features-list">
-                                    <span class="feature">React</span>
-                                    <span class="feature">JavaScript</span>
-                                    <span class="feature">PayFast</span>
-                                    <span class="feature">Yoco Payments</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="screenshot-gallery">
-                            <div class="screenshot-container">
-                                <img src="screenshots/tasselHomePage.jpg" alt="Tassel Group Screenshot 1">
-                            </div>
-                            <div class="screenshot-container">
-                                <img src="screenshots/tasselShop.jpg" alt="Tassel Group Screenshot 2">
-                            </div>
-                            <div class="screenshot-container">
-                                <img src="screenshots/tasselBookings.jpg" alt="Tassel Group Screenshot 3">
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Portfolio Project 3 -->
-            <div class="project">
-                <div class="project-header">
-                    <h2 class="project-title">MSB Finance</h2>
-                    <p class="project-subtitle">Professional financial services website with client portal</p>
-                </div>
-                <div class="project-content">
-                    <div class="project-grid">
-                        <div class="project-details">
-                            <div class="detail-item">
-                                <span class="detail-label">Category</span>
-                                <span class="detail-value">Finance / Services</span>
-                            </div>
-                            <div class="detail-item">
-                                <span class="detail-label">Website</span>
-                                <a href="https://msbfinance.co.za" target="_blank"
-                                    class="website-link">msbfinance.co.za</a>
-                            </div>
-                            <div class="detail-item">
-                                <span class="detail-label">Technologies</span>
-                                <div class="features-list">
-                                    <span class="feature">HTML</span>
-                                    <span class="feature">CSS</span>
-                                    <span class="feature">JavaScript</span>
-                                    <span class="feature">Client Portal</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="screenshot-gallery">
-                            <div class="screenshot-container">
-                                <img src="screenshots/msb-homePage.jpg" alt="MSB Finance Screenshot 1">
-                            </div>
-                            <div class="screenshot-container">
-                                <img src="screenshots/msb-userDashboard.jpg" alt="MSB Finance Screenshot 2">
-                            </div>
-                            <div class="screenshot-container">
-                                <img src="screenshots/msb-adminDashboard.jpg" alt="MSB Finance Screenshot 3">
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- About Section -->
-    <section class="about-section" id="about">
-        <h2 class="section-title">Meet the Founder</h2>
-        <div class="about-card">
-            <h3>Wandile "Fam" Maseko</h3>
-            <p class="subtitle">Qualified Cloud Application Developer | Google Hustle Academy Graduate | NEF x Mint Fresh Advisory Services Programme</p>
-            <p class="quote">
-                "I'm driven by one mission: How can technology make life easier for businesses and everyday people? With
-                EME - everything's made easier - we bridge the gap that exists between technology and customer
-                satisfaction using simplex(simple and complex) methods."
-            </p>
-            <div class="validation-box">
-                <h4>Validated Through:</h4>
-                <div class="validation-items">
-                    <div>🎓 Google Hustle Academy</div>
-                    <div>🚀 NEF x Mint Fresh Advisory Services Programme</div>
-                    <div>💰 FNB x Fetola Accelerator</div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Contact Section -->
-    <section class="contact-section" id="contact">
-        <h2 class="section-title">Ready to Transform Your Business?</h2>
-        <p class="section-subtitle">Join 45+ successful businesses that trust EME for their growth journey</p>
-
-        <div class="hero-buttons" style="margin-top: 3rem;">
-            <a href="tel:0632462802" class="btn-secondary">Call: 063 246 2802</a>
-            <a href="mailto:info@eme4you.co.za" class="btn-secondary">Email Us</a>
-            <a href="https://wa.me/27632462802?text=Hi%20EME%2C%20I%27m%20interested%20in%20your%20services."
-                target="_blank" class="btn-primary whatsapp-btn">
-                💬 WhatsApp Us
-            </a>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <footer>
-        <div class="footer-content">
-            <div class="footer-section">
-                <h3>EME</h3>
-                <p>Established Media & Enterprises</p>
-                <p style="margin-top: 1rem; opacity: 0.8;">Registration Number: 2022/414835/07</p>
-                <p style="opacity: 0.8;">Everything's Made Easier</p>
-            </div>
-            <div class="footer-section">
-                <h3>Quick Links</h3>
-                <ul>
-                    <li><a href="#services">Services</a></li>
-                    <li><a href="#portfolio-full">Portfolio</a></li>
-                    <li><a href="#about">About Us</a></li>
-                    <li><a href="#contact">Contact</a></li>
-                </ul>
-            </div>
-            <div class="footer-section">
-                <h3>Services</h3>
-                <ul>
-                    <li><a href="#services">Business Registration</a></li>
-                    <li><a href="#services">Website Design</a></li>
-                    <li><a href="#services">Tech Support</a></li>
-                    <li><a href="#services">Ongoing Support</a></li>
-                </ul>
-            </div>
-            <div class="footer-section">
-                <h3>Contact Us</h3>
-                <ul>
-                    <li>📞 <a href="tel:0632462802">063 246 2802</a></li>
-                    <li>✉️ <a href="mailto:info@eme4you.co.za">info@eme4you.co.za</a></li>
-                    <li>🌐 <a href="http://www.eme4you.co.za">www.eme4you.co.za</a></li>
-                    <li>📍 21 Korundum Avenue, Waldrift<br />Vereeniging, Gauteng, 1939</li>
-                </ul>
-            </div>
-        </div>
-        <div class="footer-bottom">
-            <p>&copy; 2025 Established Media & Enterprises. All rights reserved.</p>
-        </div>
-    </footer>
-
-     <!-- ======================== -->
-  <!-- Business Profile Modal -->
-  <!-- ======================== -->
-  <div id="profileModal" class="modal">
-    <div class="modal-content">
-      <span id="closeProfile" class="close">&times;</span>
-      <div class="profile-container">
-        <!-- Business Profile Content -->
-        <h2>Established Media & Enterprises</h2>
-        <p><strong>Reg. No:</strong> 2022/414835/07</p>
-        <p><strong>Founder:</strong> Wandile Maseko</p>
-        <p><strong>Industry:</strong> Business Enablement, Digital Services, Tech Support</p>
-        <h3>About Us</h3>
-        <p>
-          Established Media & Enterprises (EME) is a one-stop SME enablement partner.
-          We specialize in company registration, website design, branding, and tech support.
-        </p>
-
-        <h3>Our Services</h3>
-        <ul>
-          <li>Company Registration & Compliance</li>
-          <li>Website Design & Hosting</li>
-          <li>Graphic Design & Branding</li>
-          <li>Computer & Printer Repairs</li>
-          <li>SME Growth Consultation</li>
-        </ul>
-
-        <h3>Highlights & Recognition</h3>
-        <ul>
-          <li>🎓 Google Hustle Academy Graduate</li>
-          <li>💰 NEF Funding Recipient</li>
-          <li>🚀 FNB x Fetola Accelerator</li>
-        </ul>
-
-        <h3>Contact Information</h3>
-        <p>📞 063 246 2802</p>
-        <p>✉️ info@eme4you.co.za</p>
-        <p>🌐 www.eme4you.co.za</p>
-        <p>📍 21 Korundum Avenue, Waldrift, Vereeniging, Gauteng, 1939</p>
       </div>
-      <div class="modal-actions">
-        <button id="downloadProfile" class="btn-primary">⬇️ Download PDF</button>
+      <div class="hero-visual">
+        <div class="hero-logo">
+        <img src="assets/eme-logo.png" alt="EME — Established Media & Enterprises" class="logo-mark" onerror="this.style.display='none'; this.parentElement.innerHTML='<div class=\'logo-fallback\'><span class=\'logo-dot\'></span><span class=\'logo-text\'>EME</span><span class=\'logo-sub\'>Established Media<br>& Enterprises</span></div>';">
+      </div>
+      </div>
+    </div>
+
+    <div class="pipeline" aria-label="EME service pipeline">
+      <div class="pipeline-track">
+        <div class="pipeline-node">
+          <div class="connector"></div>
+          <div class="marker"></div>
+          <div class="label">Register</div>
+          <div class="tag">CIPC · SARS · CSD</div>
+        </div>
+        <div class="pipeline-node">
+          <div class="connector"></div>
+          <div class="marker"></div>
+          <div class="label">Build</div>
+          <div class="tag">Web · Brand · Content</div>
+        </div>
+        <div class="pipeline-node">
+          <div class="connector"></div>
+          <div class="marker"></div>
+          <div class="label">Support</div>
+          <div class="tag">Repairs · Maintenance</div>
+        </div>
+        <div class="pipeline-node">
+          <div class="marker"></div>
+          <div class="label">Grow</div>
+          <div class="tag">Retainer · Strategy</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="status-panel">
+      <div class="status-header">
+        <span class="status-indicator active"></span>
+        <span class="status-text">All systems operational</span>
+        <span class="status-time">Last checked: <span id="statusTime">--:--</span></span>
+      </div>
+      <div class="status-metrics">
+        <div class="status-metric">
+          <span class="metric-label">Uptime</span>
+          <span class="metric-value">99.9%</span>
+        </div>
+        <div class="status-metric">
+          <span class="metric-label">Response</span>
+          <span class="metric-value">&lt;2hr</span>
+        </div>
+        <div class="status-metric">
+          <span class="metric-label">Active Projects</span>
+          <span class="metric-value">12</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="activity-feed">
+      <div class="feed-header">
+        <span class="feed-title">LIVE SYSTEM LOG</span>
+        <span class="feed-status">● Streaming</span>
+      </div>
+      <div class="feed-items" id="activityFeed">
+        <div class="feed-item">
+          <span class="feed-time">Just now</span>
+          <span class="feed-message">System monitor initialized</span>
+        </div>
       </div>
     </div>
   </div>
+</section>
 
-    <!-- WhatsApp Float Button -->
-    <a href="https://wa.me/27632462802?text=Hi%20EME%2C%20I%27d%20like%20to%20know%20more%20about%20your%20services."
-        target="_blank" class="whatsapp-float">
-        💬 Chat with Us
-    </a>
+<section class="services" id="services">
+  <div class="wrap">
+    <div class="section-head">
+      <p class="eyebrow">Scope of work</p>
+      <h2>Four disciplines, one point of contact</h2>
+      <p>Most SMEs juggle three or four suppliers to get online and compliant. EME specs, builds, and maintains all of it under one job number.</p>
+    </div>
+  </div>
+  <div class="wrap" style="padding:0;max-width:1180px;">
+    <div class="spec-grid">
+      <div class="spec-card">
+        <div class="spec-icon">
+          <svg width="48" height="48" viewBox="0 0 48 48" fill="none">
+            <rect x="8" y="8" width="32" height="32" rx="3" stroke="#E0672B" stroke-width="1.5"/>
+            <path d="M16 20H32M16 28H32M16 36H24" stroke="#E0672B" stroke-width="2" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <div class="spec-head"><h3>Business Formation</h3><span class="spec-id">SPEC—01</span></div>
+        <p>Registered and compliant in 5–7 working days, no queue-standing required.</p>
+        <ul class="spec-list">
+          <li>CIPC registration</li>
+          <li>Tax compliance setup</li>
+          <li>Beneficial ownership filing</li>
+          <li>Central Supplier Database listing</li>
+        </ul>
+      </div>
+      <div class="spec-card">
+        <div class="spec-icon">
+          <svg width="48" height="48" viewBox="0 0 48 48" fill="none">
+            <rect x="6" y="10" width="36" height="28" rx="3" stroke="#E0672B" stroke-width="1.5"/>
+            <path d="M6 18H42" stroke="#E0672B" stroke-width="1.5"/>
+            <circle cx="14" cy="14" r="1.5" fill="#E0672B"/>
+            <circle cx="19" cy="14" r="1.5" fill="#E0672B"/>
+            <circle cx="24" cy="14" r="1.5" fill="#E0672B"/>
+          </svg>
+        </div>
+        <div class="spec-head"><h3>Digital Presence</h3><span class="spec-id">SPEC—02</span></div>
+        <p>A site and a brand that make a first-time visitor trust you immediately.</p>
+        <ul class="spec-list">
+          <li>Website design & development</li>
+          <li>Logo & graphic design</li>
+          <li>Social media setup</li>
+          <li>Content & copywriting</li>
+        </ul>
+      </div>
+      <div class="spec-card">
+        <div class="spec-icon">
+          <svg width="48" height="48" viewBox="0 0 48 48" fill="none">
+            <rect x="10" y="6" width="28" height="36" rx="3" stroke="#E0672B" stroke-width="1.5"/>
+            <rect x="16" y="12" width="16" height="12" rx="1" stroke="#E0672B" stroke-width="1"/>
+            <circle cx="24" cy="30" r="4" stroke="#E0672B" stroke-width="1.5"/>
+            <path d="M18 42H30" stroke="#E0672B" stroke-width="1.5" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <div class="spec-head"><h3>Tech Support</h3><span class="spec-id">SPEC—03</span></div>
+        <p>The unglamorous work that keeps a business actually running day to day.</p>
+        <ul class="spec-list">
+          <li>Computer repairs</li>
+          <li>Printer maintenance</li>
+          <li>24-hour turnaround</li>
+          <li>Ongoing support desk</li>
+        </ul>
+      </div>
+      <div class="spec-card">
+        <div class="spec-icon">
+          <svg width="48" height="48" viewBox="0 0 48 48" fill="none">
+            <circle cx="24" cy="24" r="18" stroke="#E0672B" stroke-width="1.5"/>
+            <path d="M24 14V24L32 28" stroke="#E0672B" stroke-width="2" stroke-linecap="round"/>
+            <circle cx="24" cy="24" r="4" fill="#E0672B" opacity="0.2"/>
+          </svg>
+        </div>
+        <div class="spec-head"><h3>Ongoing Partnership</h3><span class="spec-id">SPEC—04</span></div>
+        <p>For businesses that want a technical partner, not a once-off invoice.</p>
+        <ul class="spec-list">
+          <li>Monthly retainers</li>
+          <li>Website maintenance</li>
+          <li>Business consultation</li>
+          <li>Growth strategy</li>
+        </ul>
+      </div>
+    </div>
 
-    <script src="js/script.js"></script>
+    <div class="ticket-preview">
+      <div class="ticket-header">
+        <span class="ticket-id">TICKET #2024-0147</span>
+        <span class="ticket-status resolved">RESOLVED</span>
+      </div>
+      <div class="ticket-body">
+        <div class="ticket-timeline">
+          <div class="timeline-node">
+            <div class="node-marker"></div>
+            <div class="node-content">
+              <span class="node-time">09:15 AM</span>
+              <span class="node-text">Issue reported: Printer offline</span>
+            </div>
+          </div>
+          <div class="timeline-node">
+            <div class="node-marker"></div>
+            <div class="node-content">
+              <span class="node-time">09:45 AM</span>
+              <span class="node-text">Remote diagnostics initiated</span>
+            </div>
+          </div>
+          <div class="timeline-node">
+            <div class="node-marker"></div>
+            <div class="node-content">
+              <span class="node-time">10:20 AM</span>
+              <span class="node-text">Resolved: Network reconfiguration</span>
+            </div>
+          </div>
+        </div>
+        <div class="ticket-meta">
+          <span>Response: 30min</span>
+          <span>Resolution: 1hr 5min</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="measure-strip">
+      <div class="measure"><div class="num"><span>60%</span></div><div class="cap">Less time to launch</div></div>
+      <div class="measure"><div class="num"><span>40%</span></div><div class="cap">Lower setup cost</div></div>
+      <div class="measure"><div class="num"><span>98%</span></div><div class="cap">Registration success rate</div></div>
+    </div>
+  </div>
+</section>
+
+<section class="capabilities on-dark" id="capabilities">
+  <div class="wrap">
+    <div class="section-head on-dark">
+      <p class="eyebrow">Technical Specifications</p>
+      <h2>Engineering stack & capabilities</h2>
+      <p>The tools and systems we spec, build, and maintain.</p>
+    </div>
+    
+    <div class="tech-showcase">
+      <div class="tech-visual">
+        <svg class="tech-diagram" viewBox="0 0 500 300" xmlns="http://www.w3.org/2000/svg">
+          <!-- Architecture diagram -->
+          <rect x="20" y="120" width="80" height="50" rx="4" fill="#101E36" stroke="#28405F" stroke-width="1"/>
+          <text x="60" y="150" text-anchor="middle" fill="#9FB0C6" font-size="10" font-family="'IBM Plex Mono'">CLIENT</text>
+          
+          <rect x="180" y="40" width="80" height="50" rx="4" fill="#101E36" stroke="#28405F" stroke-width="1"/>
+          <text x="220" y="70" text-anchor="middle" fill="#9FB0C6" font-size="10" font-family="'IBM Plex Mono'">CDN</text>
+          
+          <rect x="180" y="200" width="80" height="50" rx="4" fill="#101E36" stroke="#E0672B" stroke-width="1.5"/>
+          <text x="220" y="230" text-anchor="middle" fill="#E0672B" font-size="10" font-family="'IBM Plex Mono'">SERVER</text>
+          
+          <rect x="340" y="120" width="80" height="50" rx="4" fill="#101E36" stroke="#28405F" stroke-width="1"/>
+          <text x="380" y="150" text-anchor="middle" fill="#9FB0C6" font-size="10" font-family="'IBM Plex Mono'">DATABASE</text>
+          
+          <!-- Connection lines -->
+          <line x1="100" y1="145" x2="180" y2="65" stroke="#28405F" stroke-width="1" stroke-dasharray="4,3"/>
+          <line x1="100" y1="145" x2="180" y2="225" stroke="#E0672B" stroke-width="1.5" stroke-dasharray="4,3"/>
+          <line x1="260" y1="65" x2="260" y2="200" stroke="#28405F" stroke-width="1" stroke-dasharray="4,3"/>
+          <line x1="260" y1="225" x2="340" y2="145" stroke="#28405F" stroke-width="1" stroke-dasharray="4,3"/>
+          
+          <!-- Data packets -->
+          <circle cx="140" cy="105" r="3" fill="#E0672B" opacity="0.6">
+            <animate attributeName="cx" values="140;160;180" dur="3s" repeatCount="indefinite"/>
+          </circle>
+          <circle cx="300" cy="185" r="3" fill="#22c55e" opacity="0.6">
+            <animate attributeName="cx" values="300;320;340" dur="3s" repeatCount="indefinite"/>
+          </circle>
+        </svg>
+      </div>
+      
+      <div class="tech-matrix">
+        <div class="tech-row">
+          <div class="tech-label">Infrastructure</div>
+          <div class="tech-items">
+            <span class="tech-badge">Linux/Windows Server</span>
+            <span class="tech-badge">DNS Management</span>
+            <span class="tech-badge">SSL/TLS</span>
+            <span class="tech-badge">Cloud Hosting</span>
+          </div>
+        </div>
+        
+        <div class="tech-row">
+          <div class="tech-label">Frontend</div>
+          <div class="tech-items">
+            <span class="tech-badge">HTML5/CSS3</span>
+            <span class="tech-badge">JavaScript/ES6+</span>
+            <span class="tech-badge">React.js</span>
+            <span class="tech-badge">Responsive Design</span>
+          </div>
+        </div>
+        
+        <div class="tech-row">
+          <div class="tech-label">Backend</div>
+          <div class="tech-items">
+            <span class="tech-badge">Node.js</span>
+            <span class="tech-badge">REST APIs</span>
+            <span class="tech-badge">Database Design</span>
+            <span class="tech-badge">Authentication Systems</span>
+          </div>
+        </div>
+        
+        <div class="tech-row">
+          <div class="tech-label">Integration</div>
+          <div class="tech-items">
+            <span class="tech-badge">Payment Gateways</span>
+            <span class="tech-badge">Booking Systems</span>
+            <span class="tech-badge">CRM Integration</span>
+            <span class="tech-badge">Email Automation</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="portfolio on-dark" id="work">
+  <div class="wrap">
+    <div class="section-head">
+      <p class="eyebrow">Drawing set</p>
+      <h2>Recent work, on record</h2>
+      <p>A few of the businesses currently running on systems EME designed and shipped.</p>
+    </div>
+
+    <div class="sheet">
+      <div class="sheet-bar"><span class="dwg">DWG—01 · KORUNDUM LODGE</span><span>Hospitality / Accommodation</span></div>
+      <div class="sheet-body">
+        <div class="sheet-info">
+          <h3>Korundum Lodge</h3>
+          <p>A full digital transformation with a professional site and an integrated booking system.</p>
+          <div class="tech-specs">
+            <div class="spec-row">
+              <span class="spec-label">Performance</span>
+              <span class="spec-value">98/100 Lighthouse</span>
+            </div>
+            <div class="spec-row">
+              <span class="spec-label">Security</span>
+              <span class="spec-value">SSL · DDoS Protected</span>
+            </div>
+            <div class="spec-row">
+              <span class="spec-label">Integration</span>
+              <span class="spec-value">Booking API · Payment Gateway</span>
+            </div>
+          </div>
+          <div class="sheet-row"><span class="k">Website</span><span class="v"><a href="https://korundum.co.za" target="_blank" rel="noopener">korundum.co.za ↗</a></span></div>
+          <div class="chips"><span class="chip">HTML</span><span class="chip">CSS</span><span class="chip">JavaScript</span><span class="chip">Booking system</span></div>
+        </div>
+        <div class="sheet-shots">
+          <div class="shot">
+            <img src="screenshots/korundum-homepage.jpg" alt="Korundum Lodge homepage" onerror="this.parentElement.innerHTML='<div class=\'shot-placeholder\'><svg width=\'80\' height=\'80\' viewBox=\'0 0 80 80\'><rect x=\'10\' y=\'15\' width=\'60\' height=\'50\' rx=\'3\' stroke=\'#28405F\' stroke-width=\'1.5\' fill=\'none\'/><path d=\'M14 25H66M14 35H66M14 45H40\' stroke=\'#E0672B\' stroke-width=\'1.5\' stroke-linecap=\'round\'/><text x=\'40\' y=\'70\' text-anchor=\'middle\' fill=\'#5A6472\' font-size=\'8\' font-family=\'IBM Plex Mono\'>SCREENSHOT</text></svg></div>';">
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="sheet">
+      <div class="sheet-bar"><span class="dwg">DWG—02 · TASSEL GROUP</span><span>E-commerce / Retail</span></div>
+      <div class="sheet-body">
+        <div class="sheet-info">
+          <h3>Tassel Group</h3>
+          <p>A complete e-commerce build with an online shop and appointment booking.</p>
+          <div class="tech-specs">
+            <div class="spec-row">
+              <span class="spec-label">Performance</span>
+              <span class="spec-value">95/100 Lighthouse</span>
+            </div>
+            <div class="spec-row">
+              <span class="spec-label">Security</span>
+              <span class="spec-value">SSL · PCI Compliant</span>
+            </div>
+            <div class="spec-row">
+              <span class="spec-label">Integration</span>
+              <span class="spec-value">PayFast · Yoco Payments</span>
+            </div>
+          </div>
+          <div class="sheet-row"><span class="k">Website</span><span class="v"><a href="https://tasselgroup.co.za" target="_blank" rel="noopener">tasselgroup.co.za ↗</a></span></div>
+          <div class="chips"><span class="chip">React</span><span class="chip">JavaScript</span><span class="chip">PayFast</span><span class="chip">Yoco Payments</span></div>
+        </div>
+        <div class="sheet-shots">
+          <div class="shot">
+            <img src="screenshots/tasselHomePage.jpg" alt="Tassel Group homepage" onerror="this.parentElement.innerHTML='<div class=\'shot-placeholder\'><svg width=\'80\' height=\'80\' viewBox=\'0 0 80 80\'><rect x=\'15\' y=\'10\' width=\'50\' height=\'60\' rx=\'3\' stroke=\'#28405F\' stroke-width=\'1.5\' fill=\'none\'/><circle cx=\'40\' cy=\'35\' r=\'12\' stroke=\'#E0672B\' stroke-width=\'1.5\' fill=\'none\'/><text x=\'40\' y=\'70\' text-anchor=\'middle\' fill=\'#5A6472\' font-size=\'8\' font-family=\'IBM Plex Mono\'>SCREENSHOT</text></svg></div>';">
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="sheet">
+      <div class="sheet-bar"><span class="dwg">DWG—03 · MSB FINANCE</span><span>Finance / Services</span></div>
+      <div class="sheet-body">
+        <div class="sheet-info">
+          <h3>MSB Finance</h3>
+          <p>A client-facing site backed by a secure portal with role-based dashboards.</p>
+          <div class="tech-specs">
+            <div class="spec-row">
+              <span class="spec-label">Performance</span>
+              <span class="spec-value">97/100 Lighthouse</span>
+            </div>
+            <div class="spec-row">
+              <span class="spec-label">Security</span>
+              <span class="spec-value">SSL · Role-based Auth</span>
+            </div>
+            <div class="spec-row">
+              <span class="spec-label">Integration</span>
+              <span class="spec-value">Client Portal · Dashboard</span>
+            </div>
+          </div>
+          <div class="sheet-row"><span class="k">Website</span><span class="v"><a href="https://msbfinance.co.za" target="_blank" rel="noopener">msbfinance.co.za ↗</a></span></div>
+          <div class="chips"><span class="chip">HTML</span><span class="chip">CSS</span><span class="chip">JavaScript</span><span class="chip">Client portal</span></div>
+        </div>
+        <div class="sheet-shots">
+          <div class="shot">
+            <img src="screenshots/msb-homePage.jpg" alt="MSB Finance homepage" onerror="this.parentElement.innerHTML='<div class=\'shot-placeholder\'><svg width=\'80\' height=\'80\' viewBox=\'0 0 80 80\'><rect x=\'10\' y=\'15\' width=\'60\' height=\'50\' rx=\'3\' stroke=\'#28405F\' stroke-width=\'1.5\' fill=\'none\'/><path d=\'M20 30H60M20 40H50M20 50H55\' stroke=\'#E0672B\' stroke-width=\'1.5\' stroke-linecap=\'round\'/><text x=\'40\' y=\'70\' text-anchor=\'middle\' fill=\'#5A6472\' font-size=\'8\' font-family=\'IBM Plex Mono\'>SCREENSHOT</text></svg></div>';">
+          </div>
+          <div class="shot">
+            <img src="screenshots/msb-userDashboard.jpg" alt="MSB Finance user dashboard" onerror="this.parentElement.innerHTML='<div class=\'shot-placeholder\'><svg width=\'80\' height=\'80\' viewBox=\'0 0 80 80\'><rect x=\'5\' y=\'10\' width=\'70\' height=\'60\' rx=\'3\' stroke=\'#28405F\' stroke-width=\'1.5\' fill=\'none\'/><rect x=\'15\' y=\'20\' width=\'20\' height=\'20\' rx=\'2\' stroke=\'#E0672B\' stroke-width=\'1\' fill=\'none\'/><rect x=\'45\' y=\'20\' width=\'20\' height=\'20\' rx=\'2\' stroke=\'#E0672B\' stroke-width=\'1\' fill=\'none\'/><text x=\'40\' y=\'70\' text-anchor=\'middle\' fill=\'#5A6472\' font-size=\'8\' font-family=\'IBM Plex Mono\'>DASHBOARD</text></svg></div>';">
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="docs-preview" id="docs">
+  <div class="wrap">
+    <div class="section-head">
+      <p class="eyebrow">Technical Documentation</p>
+      <h2>Knowledge base & guides</h2>
+      <p>Engineering notes and technical guides for our clients.</p>
+    </div>
+    
+    <div class="docs-grid">
+      <article class="doc-card">
+        <div class="doc-icon">
+          <svg width="40" height="40" viewBox="0 0 40 40" fill="none">
+            <rect x="8" y="4" width="24" height="32" rx="2" stroke="#E0672B" stroke-width="1.5"/>
+            <line x1="14" y1="12" x2="26" y2="12" stroke="#5A6472" stroke-width="1"/>
+            <line x1="14" y1="18" x2="26" y2="18" stroke="#5A6472" stroke-width="1"/>
+            <line x1="14" y1="24" x2="22" y2="24" stroke="#5A6472" stroke-width="1"/>
+          </svg>
+        </div>
+        <span class="doc-ref">DOC-001</span>
+        <h3>CIPC Registration: Technical Guide</h3>
+        <p>Complete technical walkthrough of company registration requirements and system integration.</p>
+        <span class="doc-meta">Updated: 2024 · 12 min read</span>
+      </article>
+      
+      <article class="doc-card">
+        <div class="doc-icon">
+          <svg width="40" height="40" viewBox="0 0 40 40" fill="none">
+            <circle cx="20" cy="20" r="14" stroke="#E0672B" stroke-width="1.5"/>
+            <path d="M20 12V20L26 24" stroke="#E0672B" stroke-width="1.5" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <span class="doc-ref">DOC-002</span>
+        <h3>Website Security Best Practices</h3>
+        <p>Implementation guide for SSL, data protection, and security hardening for SME websites.</p>
+        <span class="doc-meta">Updated: 2024 · 8 min read</span>
+      </article>
+      
+      <article class="doc-card">
+        <div class="doc-icon">
+          <svg width="40" height="40" viewBox="0 0 40 40" fill="none">
+            <rect x="6" y="8" width="28" height="24" rx="2" stroke="#E0672B" stroke-width="1.5"/>
+            <rect x="10" y="12" width="8" height="6" rx="1" stroke="#5A6472" stroke-width="1"/>
+            <rect x="22" y="12" width="8" height="6" rx="1" stroke="#5A6472" stroke-width="1"/>
+            <rect x="10" y="22" width="8" height="6" rx="1" stroke="#5A6472" stroke-width="1"/>
+            <rect x="22" y="22" width="8" height="6" rx="1" stroke="#5A6472" stroke-width="1"/>
+          </svg>
+        </div>
+        <span class="doc-ref">DOC-003</span>
+        <h3>IT Infrastructure Checklist</h3>
+        <p>Quarterly maintenance schedule and system health monitoring guide.</p>
+        <span class="doc-meta">Updated: 2024 · 15 min read</span>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="about" id="about">
+  <div class="wrap">
+    <div class="section-head">
+      <p class="eyebrow">Who's behind it</p>
+      <h2>Meet the founder</h2>
+    </div>
+    <div class="about-grid">
+      <div class="stamp">
+        <div class="founder-image">
+          <svg width="120" height="120" viewBox="0 0 120 120" fill="none">
+            <circle cx="60" cy="45" r="25" stroke="#E0672B" stroke-width="2"/>
+            <ellipse cx="60" cy="100" rx="35" ry="20" stroke="#E0672B" stroke-width="2"/>
+            <circle cx="52" cy="40" r="3" fill="#E0672B"/>
+            <circle cx="68" cy="40" r="3" fill="#E0672B"/>
+            <path d="M50 52Q60 58 70 52" stroke="#E0672B" stroke-width="1.5" fill="none"/>
+          </svg>
+        </div>
+        <h3>Wandile "Fam" Maseko</h3>
+        <span class="role">Founder & Director, EME</span>
+        <p class="about-quote">I'm driven by one question: how can technology make life easier for businesses and everyday people? EME bridges the gap between technology and customer satisfaction with simplex — simple and complex — methods.</p>
+        <ul class="creds">
+          <li>Qualified Cloud Application Developer</li>
+          <li>Google Hustle Academy Graduate</li>
+          <li>NEF x Mint Fresh Advisory Services Programme</li>
+          <li>FNB x Fetola Accelerator</li>
+        </ul>
+      </div>
+      <div class="about-visual">
+        <div class="about-illustration">
+          <svg viewBox="0 0 300 200" xmlns="http://www.w3.org/2000/svg">
+            <!-- Office/Studio illustration -->
+            <rect x="20" y="40" width="260" height="140" rx="4" fill="none" stroke="#C9C2AF" stroke-width="1"/>
+            <rect x="20" y="40" width="260" height="20" rx="4" fill="#F3F1EA" stroke="#C9C2AF" stroke-width="1"/>
+            <circle cx="38" cy="50" r="4" fill="#E0672B" opacity="0.6"/>
+            <circle cx="52" cy="50" r="4" fill="#E0672B" opacity="0.4"/>
+            <circle cx="66" cy="50" r="4" fill="#E0672B" opacity="0.2"/>
+            <!-- Desk -->
+            <rect x="40" y="100" width="100" height="8" rx="1" fill="none" stroke="#C9C2AF" stroke-width="1"/>
+            <!-- Monitor -->
+            <rect x="65" y="70" width="50" height="30" rx="2" fill="none" stroke="#E0672B" stroke-width="1.5"/>
+            <rect x="70" y="74" width="40" height="22" rx="1" fill="#F3F1EA" stroke="#C9C2AF" stroke-width="0.5"/>
+            <!-- Code on screen -->
+            <line x1="76" y1="80" x2="100" y2="80" stroke="#5A6472" stroke-width="0.8"/>
+            <line x1="76" y1="84" x2="94" y2="84" stroke="#E0672B" stroke-width="0.8"/>
+            <line x1="76" y1="88" x2="98" y2="88" stroke="#5A6472" stroke-width="0.8"/>
+            <line x1="76" y1="92" x2="88" y2="92" stroke="#5A6472" stroke-width="0.8"/>
+            <!-- Second desk -->
+            <rect x="160" y="120" width="80" height="6" rx="1" fill="none" stroke="#C9C2AF" stroke-width="1"/>
+            <rect x="175" y="95" width="40" height="25" rx="2" fill="none" stroke="#C9C2AF" stroke-width="1"/>
+            <!-- Person -->
+            <circle cx="90" cy="65" r="8" fill="none" stroke="#5A6472" stroke-width="1.5"/>
+            <line x1="90" y1="73" x2="90" y2="100" stroke="#5A6472" stroke-width="1.5"/>
+            <line x1="78" y1="82" x2="102" y2="82" stroke="#5A6472" stroke-width="1.5"/>
+          </svg>
+        </div>
+        <p style="color:var(--graphite);font-size:1.05rem;margin-bottom:1.2rem;">EME exists because most SMEs don't need another agency pitching packages — they need one partner who can register the company on Monday, ship a working website by Friday, and still take the support call six months later.</p>
+        <p style="color:var(--graphite);font-size:1.05rem;">That's the whole model: fewer suppliers, faster turnaround, and a founder who still reviews the spec sheet on every job.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="cv-promo on-dark" id="cv-maker">
+  <div class="wrap">
+    <div class="section-head on-dark">
+      <p class="eyebrow">New Tool</p>
+      <h2>ATS-Compliant CV Maker</h2>
+      <p>Generate professional, ATS-friendly CVs in minutes. Upload your documents, fill in your details, and export a polished CV — all in one workflow.</p>
+    </div>
+    
+    <div class="cv-feature-grid">
+      <div class="cv-feature-card">
+        <div class="cv-feature-icon">
+          <svg width="48" height="48" viewBox="0 0 48 48" fill="none">
+            <rect x="6" y="4" width="36" height="40" rx="3" stroke="#E0672B" stroke-width="1.5"/>
+            <line x1="14" y1="14" x2="34" y2="14" stroke="#9FB0C6" stroke-width="1.5"/>
+            <line x1="14" y1="22" x2="30" y2="22" stroke="#9FB0C6" stroke-width="1.5"/>
+            <line x1="14" y1="30" x2="34" y2="30" stroke="#9FB0C6" stroke-width="1.5"/>
+            <line x1="14" y1="38" x2="26" y2="38" stroke="#9FB0C6" stroke-width="1.5"/>
+          </svg>
+        </div>
+        <h3>Smart Form</h3>
+        <p>Intelligent form that guides you through every section of a professional CV.</p>
+      </div>
+      
+      <div class="cv-feature-card">
+        <div class="cv-feature-icon">
+          <svg width="48" height="48" viewBox="0 0 48 48" fill="none">
+            <circle cx="24" cy="24" r="20" stroke="#E0672B" stroke-width="1.5"/>
+            <path d="M16 22L22 28L32 18" stroke="#22c55e" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
+        <h3>ATS Optimized</h3>
+        <p>Formatted to pass Applicant Tracking Systems with the right keywords and structure.</p>
+      </div>
+      
+      <div class="cv-feature-card">
+        <div class="cv-feature-icon">
+          <svg width="48" height="48" viewBox="0 0 48 48" fill="none">
+            <rect x="10" y="8" width="28" height="32" rx="3" stroke="#E0672B" stroke-width="1.5"/>
+            <path d="M18 20H30M18 28H30M18 36H24" stroke="#9FB0C6" stroke-width="1.5" stroke-linecap="round"/>
+            <path d="M14 14L14 16" stroke="#E0672B" stroke-width="1.5" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <h3>Document Upload</h3>
+        <p>Securely upload certified ID and proof of residence alongside your CV.</p>
+      </div>
+      
+      <div class="cv-feature-card">
+        <div class="cv-feature-icon">
+          <svg width="48" height="48" viewBox="0 0 48 48" fill="none">
+            <path d="M14 6H30L38 14V42H14V6Z" stroke="#E0672B" stroke-width="1.5"/>
+            <path d="M30 6V14H38" stroke="#E0672B" stroke-width="1.5"/>
+            <path d="M20 30L24 34L28 30" stroke="#22c55e" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M24 34V22" stroke="#22c55e" stroke-width="2" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <h3>PDF Export</h3>
+        <p>Download your completed CV as a professional PDF ready to send to employers.</p>
+      </div>
+    </div>
+    
+    <div class="cv-cta">
+      <a href="cv-maker.html" class="btn btn-primary">
+        Launch CV Maker
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+          <path d="M3 8H13M10 5L13 8L10 11" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </a>
+    </div>
+  </div>
+</section>
+
+<section class="contact" id="contact">
+  <div class="wrap">
+    <div class="section-head on-dark">
+      <p class="eyebrow">Get in touch</p>
+      <h2>Tell us what you're building</h2>
+      <p>Fill in the brief and we'll come back with a scope and timeline — usually within a business day.</p>
+    </div>
+    <div class="contact-grid">
+      <form class="contact-form" id="contactForm" novalidate>
+        <div class="field-row">
+          <div class="field">
+            <label for="name">Name *</label>
+            <input type="text" id="name" name="name" required>
+          </div>
+          <div class="field">
+            <label for="email">Email *</label>
+            <input type="email" id="email" name="email" required>
+          </div>
+        </div>
+        <div class="field-row">
+          <div class="field">
+            <label for="phone">Phone</label>
+            <input type="tel" id="phone" name="phone">
+          </div>
+          <div class="field">
+            <label for="service">Service *</label>
+            <select id="service" name="service" required>
+              <option value="">Select one</option>
+              <option value="formation">Business Formation</option>
+              <option value="digital">Digital Presence</option>
+              <option value="support">Tech Support</option>
+              <option value="partnership">Ongoing Partnership</option>
+            </select>
+          </div>
+        </div>
+        <div class="field">
+          <label for="message">What do you need? *</label>
+          <textarea id="message" name="message" rows="4" required></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary" style="align-self:flex-start;">Send brief</button>
+        <div class="form-message" id="formMessage"></div>
+      </form>
+      <div class="contact-direct">
+        <div class="contact-illustration">
+          <svg width="200" height="100" viewBox="0 0 200 100" fill="none">
+            <rect x="30" y="20" width="140" height="60" rx="4" fill="none" stroke="#28405F" stroke-width="1"/>
+            <circle cx="100" cy="45" r="12" fill="none" stroke="#E0672B" stroke-width="1.5"/>
+            <path d="M94 45L98 49L106 41" stroke="#E0672B" stroke-width="1.5" stroke-linecap="round"/>
+            <text x="100" y="75" text-anchor="middle" fill="#5A6472" font-size="8" font-family="'IBM Plex Mono'">MESSAGE SENT</text>
+          </svg>
+        </div>
+        <div class="direct-item">
+          <span class="k">Call</span>
+          <a class="v" href="tel:0632462802">063 246 2802</a>
+        </div>
+        <div class="direct-item">
+          <span class="k">Email</span>
+          <a class="v" href="mailto:info@eme4you.co.za">info@eme4you.co.za</a>
+        </div>
+        <div class="direct-item">
+          <span class="k">WhatsApp</span>
+          <a class="v" href="https://wa.me/27632462802?text=Hi%20EME%2C%20I%27m%20interested%20in%20your%20services." target="_blank" rel="noopener">Chat directly ↗</a>
+        </div>
+        <div class="direct-item">
+          <span class="k">Studio</span>
+          <span class="v">21 Korundum Avenue, Waldrift<br>Vereeniging, Gauteng, 1939</span>
+        </div>
+        <div class="estimator-widget">
+          <div class="widget-header">
+            <span class="widget-icon">⚙️</span>
+            <h3>Quick Project Estimator</h3>
+          </div>
+          <div class="widget-body">
+            <div class="est-row">
+              <label for="projectType">Project Type</label>
+              <select id="projectType">
+                <option value="website">Business Website</option>
+                <option value="ecommerce">E-commerce Platform</option>
+                <option value="portal">Client Portal</option>
+                <option value="registration">Business Registration</option>
+              </select>
+            </div>
+            <div class="est-row">
+              <label>Complexity</label>
+              <div class="complexity-slider">
+                <input type="range" id="complexity" min="1" max="3" value="2">
+                <div class="range-labels">
+                  <span>Basic</span>
+                  <span>Standard</span>
+                  <span>Advanced</span>
+                </div>
+              </div>
+            </div>
+            <div class="est-result">
+              <span class="est-label">Estimated Timeline</span>
+              <span class="est-value" id="estimateDisplay">7-10 business days</span>
+            </div>
+            <div class="est-result" style="margin-top:0.8rem;">
+              <span class="est-label">Estimated Cost</span>
+              <span class="est-value" id="costDisplay">R5,000 - R8,000</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="titleblock">
+      <div class="tb-col">
+        <h4>EME</h4>
+        <p>Established Media & Enterprises</p>
+        <p>Everything Made Easier</p>
+        <p>Reg. 2022/414835/07</p>
+        <div class="footer-logo">
+          <img src="assets/eme-logo.png" alt="EME Logo" class="footer-logo-img" onerror="this.style.display='none'; this.parentElement.innerHTML='<div class=\'footer-logo-fallback\'><span class=\'fl-dot\'></span><span class=\'fl-text\'>EME</span></div>';">
+        </div>
+      </div>
+      <div class="tb-col">
+        <h4>Navigate</h4>
+        <ul>
+          <li><a href="#services">Services</a></li>
+          <li><a href="#capabilities">Capabilities</a></li>
+          <li><a href="#work">Work</a></li>
+          <li><a href="#docs">Docs</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </div>
+      <div class="tb-col">
+        <h4>Services</h4>
+        <ul>
+          <li><a href="#services">Business Registration</a></li>
+          <li><a href="#services">Website Design</a></li>
+          <li><a href="#services">Tech Support</a></li>
+        </ul>
+      </div>
+      <div class="tb-col">
+        <h4>Contact</h4>
+        <ul>
+          <li><a href="tel:0632462802">063 246 2802</a></li>
+          <li><a href="mailto:info@eme4you.co.za">info@eme4you.co.za</a></li>
+          <li><a href="http://www.eme4you.co.za">www.eme4you.co.za</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="tb-bottom">
+      <span>© <span class="current-year">2026</span> ESTABLISHED MEDIA & ENTERPRISES</span>
+      <span>DRAWN BY EME · VEREENIGING, GAUTENG</span>
+    </div>
+  </div>
+</footer>
+
+<div id="profileModal" class="modal">
+  <div class="modal-content">
+    <span id="closeProfile" class="close">&times;</span>
+    <p class="eyebrow" style="margin-bottom:0.6rem;">Business Profile</p>
+    <h2>Established Media & Enterprises</h2>
+    <p><strong>Reg. No:</strong> 2022/414835/07</p>
+    <p><strong>Founder:</strong> Wandile Maseko</p>
+    <p><strong>Industry:</strong> Business Enablement, Digital Services, Tech Support</p>
+    <h3>About Us</h3>
+    <p>EME is a one-stop SME enablement partner specialising in company registration, website design, branding, and tech support.</p>
+    <h3>Services</h3>
+    <ul>
+      <li>Company Registration & Compliance</li>
+      <li>Website Design & Hosting</li>
+      <li>Graphic Design & Branding</li>
+      <li>Computer & Printer Repairs</li>
+      <li>SME Growth Consultation</li>
+    </ul>
+    <h3>Recognition</h3>
+    <ul>
+      <li>Google Hustle Academy Graduate</li>
+      <li>NEF Funding Recipient</li>
+      <li>FNB x Fetola Accelerator</li>
+    </ul>
+    <h3>Contact</h3>
+    <p>063 246 2802 · info@eme4you.co.za · www.eme4you.co.za</p>
+    <p>21 Korundum Avenue, Waldrift, Vereeniging, Gauteng, 1939</p>
+    <div class="modal-actions">
+      <button id="downloadProfile" class="btn btn-primary">Download PDF</button>
+    </div>
+  </div>
+</div>
+
+<a href="https://wa.me/27632462802?text=Hi%20EME%2C%20I%27d%20like%20to%20know%20more%20about%20your%20services." target="_blank" rel="noopener" class="wa-float">💬 Chat with us</a>
+
+<script src="js/script.js"></script>
 </body>
-
 </html>
