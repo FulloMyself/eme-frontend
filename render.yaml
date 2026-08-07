@@ -1,4 +1,3 @@
-@"
 services:
   - type: web
     name: eme4you
@@ -8,4 +7,3 @@ services:
     envVars:
       - key: SECRET_KEY
         value: eme4you-cv-bot-2024
-"@ | Out-File -FilePath render.yaml -Encoding UTF8
