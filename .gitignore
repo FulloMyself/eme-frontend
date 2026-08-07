@@ -1,0 +1,19 @@
+@"
+__pycache__/
+*.pyc
+*.db
+generated_cvs/
+uploads/
+*.pdf
+"@ | Out-File -FilePath .gitignore -Encoding UTF8
+
+# Remove the files from Git (they'll stay on your computer)
+git rm --cached __pycache__/cv_generator.cpython-314.pyc
+git rm --cached __pycache__/db.cpython-314.pyc
+git rm --cached eme_cv_bot.db
+git rm --cached generated_cvs/Wandile_Maseko_20260807_132523.pdf
+
+# Commit and push the cleanup
+git add .gitignore
+git commit -m "Add gitignore and clean up"
+git push origin main
