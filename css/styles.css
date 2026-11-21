@@ -1093,6 +1093,9 @@ footer{background:var(--ink);border-top:1px solid var(--line-soft);}
    RESPONSIVE
    ========================================================= */
 @media (max-width: 1024px) {
+  .nav-links {
+    gap: 1.2rem;
+  }
   .hero-grid {
     gap: 2.5rem;
   }

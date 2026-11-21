@@ -26,6 +26,7 @@
       <li><a href="index.html#services">Services</a></li>
       <li><a href="index.html#work">Work</a></li>
       <li><a href="cv-maker.html" class="nav-featured">CV Maker</a></li>
+      <li><a href="https://eme4you.co.za/ContractsZAR/#/" target="_blank" rel="noopener">ContractZAR</a></li>
       <li><a href="index.html#contact">Contact</a></li>
     </ul>
     <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu">
@@ -236,8 +237,8 @@
       <!-- Step 4: Document Upload -->
       <div class="form-step" data-step="4">
         <div class="form-section-header">
-          <h2>Required Documents</h2>
-          <p>Upload your certified documents. Accepted formats: PDF, JPG, PNG (max 5MB each).</p>
+          <h2>Supporting Documents (Optional)</h2>
+          <p>Documents you upload will be appended to your CV PDF. Accepted formats: PDF, JPG, PNG (max 5MB each).</p>
         </div>
         
         <div class="upload-grid">
@@ -293,13 +294,13 @@
         <div class="form-actions">
           <button type="button" id="prevStep" class="btn btn-outline on-dark">← Previous</button>
           <button type="button" id="submitCV" class="btn btn-primary">
-    Next →
-            Generate CV
+            <span id="submitLabel">Next →</span>
             <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
               <path d="M3 8H13M10 5L13 8L10 11" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
             </svg>
           </button>
         </div>
+        <p id="cvFormError" class="cv-form-error" role="alert" aria-live="polite"></p>
       </div>
     </form>
   </div>
@@ -355,6 +356,7 @@
   </div>
 </footer>
 
+<script src="js/script.js"></script>
 <script src="js/cv-maker.js"></script>
 </body>
 </html>

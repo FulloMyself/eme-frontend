@@ -1,7 +1,7 @@
 import sqlite3
 import os
 
-DATABASE_PATH = 'eme_cv_bot.db'
+DATABASE_PATH = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'eme_cv_bot.db')
 
 def get_db_connection():
     """Get a database connection with row factory set"""
