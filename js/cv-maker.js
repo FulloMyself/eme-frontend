@@ -298,6 +298,41 @@
     addPreviewSection(preview, 'Documents to append', documents);
   }
 
+  function getDownloadPanel() {
+    let panel = document.getElementById('cvDownloads');
+    let links = document.getElementById('cvDownloadLinks');
+    if (!panel) {
+      panel = document.createElement('div');
+      panel.id = 'cvDownloads';
+      panel.className = 'cv-downloads';
+      panel.hidden = true;
+      panel.setAttribute('aria-live', 'polite');
+
+      const heading = document.createElement('h3');
+      heading.textContent = 'Your CV is ready';
+      panel.appendChild(heading);
+    }
+
+    if (!links) {
+      links = document.createElement('div');
+      links.id = 'cvDownloadLinks';
+      links.className = 'cv-download-links';
+      panel.appendChild(links);
+    }
+
+    if (!panel.isConnected) {
+      const finalStep = document.querySelector('.form-step[data-step="5"]') || form;
+      const formActions = finalStep.querySelector('.form-actions');
+      if (formActions) {
+        finalStep.insertBefore(panel, formActions);
+      } else {
+        finalStep.appendChild(panel);
+      }
+    }
+
+    return { panel, links };
+  }
+
   function generateCV() {
     const formData = new FormData(form);
     const submitBtn = document.getElementById('submitCV');
@@ -310,8 +345,7 @@
     const submitLabel = document.getElementById('submitLabel');
     if (submitLabel) submitLabel.textContent = 'Generating...';
 
-    const downloadsPanel = document.getElementById('cvDownloads');
-    const downloadLinks = document.getElementById('cvDownloadLinks');
+    const { panel: downloadsPanel, links: downloadLinks } = getDownloadPanel();
     if (downloadsPanel) downloadsPanel.hidden = true;
     if (downloadLinks) downloadLinks.replaceChildren();
     
@@ -325,10 +359,6 @@
       if (!response.ok || !data.success) {
         throw new Error(data.error || `Server error: ${response.status}`);
       }
-      if (!downloadsPanel || !downloadLinks) {
-        throw new Error('The download panel is unavailable. Please reload and try again.');
-      }
-
       const outputFormat = formData.get('outputFormat') || 'pdf';
       const hasDocuments = ['certifiedId', 'proofOfResidence'].some(name => {
         const file = formData.get(name);
