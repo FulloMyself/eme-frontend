@@ -73,10 +73,10 @@ def init_db():
         ''')
         
         conn.commit()
-        print("✅ Database initialized successfully!")
+        print("Database initialized successfully.")
         
     except Exception as e:
-        print(f"❌ Database initialization error: {str(e)}")
+        print(f"Database initialization error: {str(e)}")
         raise
     finally:
         conn.close()

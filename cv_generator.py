@@ -220,8 +220,8 @@ def generate_ats_cv(cv_data, output_path):
     # Build PDF
     try:
         doc.build(story)
-        print(f"✅ ATS-Compliant CV generated: {output_path}")
+        print(f"ATS-compliant CV generated: {output_path}")
         return True
     except Exception as e:
-        print(f"❌ Error generating CV: {str(e)}")
+        print(f"Error generating CV: {str(e)}")
         raise
