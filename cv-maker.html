@@ -4,7 +4,7 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>EME CV Maker — ATS-Compliant CV Generator</title>
-<meta name="description" content="Create professional ATS-compliant CVs with EME's intelligent CV maker. Upload documents, fill your details, and export as PDF." />
+<meta name="description" content="Create an ATS-compliant CV in your choice of layout and download it as PDF or Word. Supporting documents stay appended in the combined PDF." />
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -41,7 +41,7 @@
       <div class="cv-hero-content">
         <p class="eyebrow">CV MAKER — SPEC CV-01</p>
         <h1>Build your ATS-compliant CV</h1>
-        <p class="lead">Fill in the form below and we'll generate a professional CV formatted to pass Applicant Tracking Systems. Upload your certified documents and download everything as a PDF.</p>
+        <p class="lead">Choose a CV layout and download an editable Word document or PDF. Upload supporting documents to keep them appended after your CV in the combined PDF.</p>
       </div>
       <div class="cv-hero-visual">
         <svg width="200" height="200" viewBox="0 0 200 200" fill="none">
@@ -281,6 +281,27 @@
           <h2>Review & Generate CV</h2>
           <p>Review your information before generating your CV. You can go back to any step to make changes.</p>
         </div>
+
+        <div class="cv-field-row cv-format-row">
+          <div class="cv-field">
+            <label for="cvTemplate">CV layout</label>
+            <select id="cvTemplate" name="cvTemplate">
+              <option value="classic">Classic ATS — clean and traditional</option>
+              <option value="modern">Modern — contemporary teal accents</option>
+              <option value="executive">Executive — centered, formal layout</option>
+            </select>
+          </div>
+          <div class="cv-field">
+            <label for="outputFormat">Download format</label>
+            <select id="outputFormat" name="outputFormat">
+              <option value="pdf">PDF</option>
+              <option value="docx">Word (DOCX)</option>
+            </select>
+          </div>
+        </div>
+        <p class="cv-format-note">
+          Uploaded supporting documents stay after your CV in the combined PDF. If you choose Word, you'll receive the editable CV and a separate combined PDF when documents are uploaded.
+        </p>
         
         <div class="review-preview">
           <div class="preview-header">
@@ -289,6 +310,11 @@
           <div class="preview-content" id="cvPreview">
             <p class="preview-placeholder">Your CV preview will appear here. Complete all required fields in the previous steps.</p>
           </div>
+        </div>
+
+        <div id="cvDownloads" class="cv-downloads" hidden aria-live="polite">
+          <h3>Your CV is ready</h3>
+          <div id="cvDownloadLinks" class="cv-download-links"></div>
         </div>
         
         <div class="form-actions">

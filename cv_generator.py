@@ -8,12 +8,50 @@ from reportlab.pdfbase import pdfmetrics
 from reportlab.pdfbase.ttfonts import TTFont
 import os
 from xml.sax.saxutils import escape
+from docx import Document
+from docx.enum.text import WD_ALIGN_PARAGRAPH
+from docx.shared import Inches, Pt, RGBColor
 
 
 def _paragraph_text(value):
     return escape(str(value)).replace('\n', '<br/>')
 
-def generate_ats_cv(cv_data, output_path):
+CV_TEMPLATES = {
+    'classic': {
+        'accent': '#000000',
+        'title_color': '#000000',
+        'title_size': 16,
+        'title_alignment': 0,
+        'contact_alignment': 0,
+        'margin': 72,
+    },
+    'modern': {
+        'accent': '#0B6E75',
+        'title_color': '#123B55',
+        'title_size': 22,
+        'title_alignment': 0,
+        'contact_alignment': 0,
+        'margin': 54,
+    },
+    'executive': {
+        'accent': '#17365D',
+        'title_color': '#17365D',
+        'title_size': 22,
+        'title_alignment': 1,
+        'contact_alignment': 1,
+        'margin': 66,
+    },
+}
+
+
+def _template_config(template):
+    try:
+        return CV_TEMPLATES[template]
+    except KeyError as error:
+        raise ValueError('Choose a valid CV layout.') from error
+
+
+def generate_ats_cv(cv_data, output_path, template='classic'):
     """
     Generate an ATS-compliant CV PDF
     ATS-friendly features:
@@ -23,17 +61,18 @@ def generate_ats_cv(cv_data, output_path):
     - Clear section headings
     - Proper keyword placement
     """
-    
+    template_config = _template_config(template)
+
     # Ensure output directory exists
     os.makedirs(os.path.dirname(output_path), exist_ok=True)
     
     doc = SimpleDocTemplate(
         output_path,
         pagesize=A4,
-        rightMargin=72,
-        leftMargin=72,
-        topMargin=72,
-        bottomMargin=72
+        rightMargin=template_config['margin'],
+        leftMargin=template_config['margin'],
+        topMargin=template_config['margin'],
+        bottomMargin=template_config['margin']
     )
     
     styles = getSampleStyleSheet()
@@ -42,18 +81,19 @@ def generate_ats_cv(cv_data, output_path):
     title_style = ParagraphStyle(
         'CustomTitle',
         parent=styles['Heading1'],
-        fontSize=16,
-        textColor=colors.black,
+        fontSize=template_config['title_size'],
+        textColor=colors.HexColor(template_config['title_color']),
         spaceAfter=6,
         fontName='Helvetica-Bold',
-        leading=20
+        leading=template_config['title_size'] + 4,
+        alignment=template_config['title_alignment']
     )
     
     heading_style = ParagraphStyle(
         'CustomHeading',
         parent=styles['Heading2'],
         fontSize=12,
-        textColor=colors.black,
+        textColor=colors.HexColor(template_config['accent']),
         spaceAfter=12,
         spaceBefore=12,
         fontName='Helvetica-Bold',
@@ -68,6 +108,11 @@ def generate_ats_cv(cv_data, output_path):
         spaceAfter=6,
         fontName='Helvetica',
         leading=14
+    )
+    contact_style = ParagraphStyle(
+        'CustomContact',
+        parent=normal_style,
+        alignment=template_config['contact_alignment']
     )
     
     bullet_style = ParagraphStyle(
@@ -103,10 +148,14 @@ def generate_ats_cv(cv_data, output_path):
     
     if contact_parts:
         contact_text = " | ".join(contact_parts)
-        story.append(Paragraph(contact_text, normal_style))
+        story.append(Paragraph(contact_text, contact_style))
     
     story.append(Spacer(1, 0.2 * inch))
-    story.append(HRFlowable(width="100%", thickness=1, color=colors.black))
+    story.append(HRFlowable(
+        width="100%",
+        thickness=1,
+        color=colors.HexColor(template_config['accent'])
+    ))
     story.append(Spacer(1, 0.2 * inch))
     
     # Professional Summary
@@ -225,3 +274,140 @@ def generate_ats_cv(cv_data, output_path):
     except Exception as e:
         print(f"Error generating CV: {str(e)}")
         raise
+
+
+def generate_docx_cv(cv_data, output_path, template='classic'):
+    template_config = _template_config(template)
+    accent = RGBColor.from_string(template_config['accent'].lstrip('#'))
+    alignment = (
+        WD_ALIGN_PARAGRAPH.CENTER
+        if template_config['title_alignment']
+        else WD_ALIGN_PARAGRAPH.LEFT
+    )
+
+    os.makedirs(os.path.dirname(output_path), exist_ok=True)
+    document = Document()
+    section = document.sections[0]
+    margin = Inches(template_config['margin'] / 72)
+    section.top_margin = margin
+    section.bottom_margin = margin
+    section.left_margin = margin
+    section.right_margin = margin
+
+    normal_style = document.styles['Normal']
+    normal_style.font.name = 'Arial'
+    normal_style.font.size = Pt(10)
+
+    personal = cv_data.get('personal_info', {})
+    name = document.add_paragraph()
+    name.alignment = alignment
+    name.paragraph_format.space_after = Pt(4)
+    name_run = name.add_run(str(personal.get('full_name', 'Your Name')).upper())
+    name_run.bold = True
+    name_run.font.name = 'Arial'
+    name_run.font.size = Pt(template_config['title_size'])
+    name_run.font.color.rgb = RGBColor.from_string(
+        template_config['title_color'].lstrip('#')
+    )
+
+    contact_parts = [
+        f'{label}: {personal[key]}'
+        for key, label in (
+            ('phone', 'Phone'),
+            ('email', 'Email'),
+            ('address', 'Address'),
+            ('linkedin', 'LinkedIn'),
+            ('portfolio', 'Portfolio'),
+        )
+        if personal.get(key)
+    ]
+    if contact_parts:
+        contact = document.add_paragraph(' | '.join(contact_parts))
+        contact.alignment = alignment
+        contact.paragraph_format.space_after = Pt(12)
+
+    def add_section(title):
+        paragraph = document.add_paragraph()
+        paragraph.paragraph_format.space_before = Pt(10)
+        paragraph.paragraph_format.space_after = Pt(4)
+        run = paragraph.add_run(title.upper())
+        run.bold = True
+        run.font.name = 'Arial'
+        run.font.size = Pt(12)
+        run.font.color.rgb = accent
+
+    summary = cv_data.get('professional_summary', '')
+    if summary and summary.strip():
+        add_section('Professional Summary')
+        document.add_paragraph(summary.strip())
+
+    work_experience = cv_data.get('work_experience', [])
+    if work_experience:
+        add_section('Work Experience')
+        for experience in work_experience:
+            if not isinstance(experience, dict):
+                continue
+            title = experience.get('title', '')
+            company = experience.get('company', '')
+            if title or company:
+                paragraph = document.add_paragraph()
+                run = paragraph.add_run(
+                    f'{title}{f" | {company}" if company else ""}'
+                )
+                run.bold = True
+            start_date = experience.get('start_date', '')
+            end_date = experience.get('end_date', '') or 'Present'
+            if start_date or experience.get('end_date'):
+                document.add_paragraph(
+                    f'{start_date} - {end_date}' if start_date else end_date
+                )
+            responsibilities = experience.get('responsibilities', '')
+            if responsibilities:
+                for line in responsibilities.strip().splitlines():
+                    clean_line = line.lstrip('•-*> ').strip()
+                    if clean_line:
+                        document.add_paragraph(clean_line, style='List Bullet')
+
+    education = cv_data.get('education', [])
+    if education:
+        add_section('Education')
+        for item in education:
+            if not isinstance(item, dict):
+                continue
+            degree = item.get('degree', '')
+            institution = item.get('institution', '')
+            if degree or institution:
+                paragraph = document.add_paragraph()
+                run = paragraph.add_run(
+                    f'{degree}{f" - {institution}" if institution else ""}'
+                )
+                run.bold = True
+            if item.get('grad_year'):
+                document.add_paragraph(f"Graduated: {item['grad_year']}")
+
+    skills = cv_data.get('skills', [])
+    if skills:
+        add_section('Skills')
+        document.add_paragraph(', '.join(skills))
+
+    certifications = cv_data.get('certifications', [])
+    if certifications:
+        add_section('Certifications')
+        for certification in certifications:
+            if not isinstance(certification, dict):
+                continue
+            details = [
+                certification.get('name', ''),
+                certification.get('issuer', ''),
+                certification.get('year', ''),
+            ]
+            text = ' | '.join(value for value in details if value)
+            if text:
+                document.add_paragraph(text)
+
+    languages = cv_data.get('languages', [])
+    if languages:
+        add_section('Languages')
+        document.add_paragraph(', '.join(languages))
+
+    document.save(output_path)

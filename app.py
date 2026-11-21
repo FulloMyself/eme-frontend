@@ -266,6 +266,10 @@ def create_cv():
         # 6. Generate timestamp and safe name
         timestamp = datetime.now().strftime('%Y%m%d_%H%M%S_%f')
         safe_name = secure_filename(full_name.replace(' ', '_')) or f"user_{timestamp}"
+        cv_template = request.form.get('cvTemplate', 'classic')
+        output_format = request.form.get('outputFormat', 'pdf').lower()
+        if output_format not in ('pdf', 'docx'):
+            raise ValueError('Choose PDF or Word (DOCX) as the download format.')
         
         # 7. Generate the CV and append any supplied documents.
         cv_data = {
@@ -278,26 +282,53 @@ def create_cv():
             'languages': []
         }
         
-        cv_filename = f"{safe_name}_{timestamp}.pdf"
+        extension = 'docx' if output_format == 'docx' else 'pdf'
+        cv_filename = f"{safe_name}_{timestamp}.{extension}"
         cv_path = os.path.join(app.config['CV_FOLDER'], cv_filename)
+        combined_pdf_filename = None
 
         with tempfile.TemporaryDirectory(dir=app.config['UPLOAD_FOLDER']) as temp_dir:
             documents = _save_uploaded_documents(temp_dir)
-            if documents:
+            if output_format == 'docx':
+                cv_generator.generate_docx_cv(cv_data, cv_path, cv_template)
+                if documents:
+                    source_cv_path = os.path.join(temp_dir, 'cv.pdf')
+                    combined_path = os.path.join(temp_dir, 'combined.pdf')
+                    cv_generator.generate_ats_cv(
+                        cv_data, source_cv_path, cv_template
+                    )
+                    _combine_documents(
+                        source_cv_path, documents, temp_dir, combined_path
+                    )
+                    combined_pdf_filename = (
+                        f"{safe_name}_{timestamp}_with_documents.pdf"
+                    )
+                    os.replace(
+                        combined_path,
+                        os.path.join(app.config['CV_FOLDER'], combined_pdf_filename)
+                    )
+            elif documents:
                 source_cv_path = os.path.join(temp_dir, 'cv.pdf')
                 combined_path = os.path.join(temp_dir, 'combined.pdf')
-                cv_generator.generate_ats_cv(cv_data, source_cv_path)
+                cv_generator.generate_ats_cv(
+                    cv_data, source_cv_path, cv_template
+                )
                 _combine_documents(source_cv_path, documents, temp_dir, combined_path)
                 os.replace(combined_path, cv_path)
             else:
-                cv_generator.generate_ats_cv(cv_data, cv_path)
+                cv_generator.generate_ats_cv(cv_data, cv_path, cv_template)
         
-        return jsonify({
+        response_data = {
             'success': True,
             'message': 'CV generated successfully',
             'cv_filename': cv_filename,
             'download_url': f'{request.script_root}/download_cv/{cv_filename}'
-        })
+        }
+        if combined_pdf_filename:
+            response_data['combined_pdf_url'] = (
+                f'{request.script_root}/download_cv/{combined_pdf_filename}'
+            )
+        return jsonify(response_data)
     
     except ValueError as e:
         return jsonify({'success': False, 'error': str(e)}), 400

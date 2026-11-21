@@ -255,6 +255,7 @@
     preview.innerHTML = '';
 
     const formData = new FormData(form);
+    preview.dataset.template = formData.get('cvTemplate') || 'classic';
     addPreviewText(preview, 'h2', formData.get('fullName') || 'Your Name');
     addPreviewText(preview, 'p', [
       formData.get('email'),
@@ -308,6 +309,11 @@
     }
     const submitLabel = document.getElementById('submitLabel');
     if (submitLabel) submitLabel.textContent = 'Generating...';
+
+    const downloadsPanel = document.getElementById('cvDownloads');
+    const downloadLinks = document.getElementById('cvDownloadLinks');
+    if (downloadsPanel) downloadsPanel.hidden = true;
+    if (downloadLinks) downloadLinks.replaceChildren();
     
     const apiBaseUrl = form.dataset.apiBaseUrl || window.location.origin;
     fetch(`${apiBaseUrl.replace(/\/+$/, '')}/create_cv`, {
@@ -319,7 +325,39 @@
       if (!response.ok || !data.success) {
         throw new Error(data.error || `Server error: ${response.status}`);
       }
-      window.location.href = new URL(data.download_url, apiBaseUrl).toString();
+      if (!downloadsPanel || !downloadLinks) {
+        throw new Error('The download panel is unavailable. Please reload and try again.');
+      }
+
+      const outputFormat = formData.get('outputFormat') || 'pdf';
+      const hasDocuments = ['certifiedId', 'proofOfResidence'].some(name => {
+        const file = formData.get(name);
+        return file instanceof File && file.size > 0;
+      });
+      const downloads = [{
+        url: data.download_url,
+        label: outputFormat === 'docx'
+          ? 'Download editable Word CV'
+          : hasDocuments
+            ? 'Download CV with supporting documents (PDF)'
+            : 'Download CV (PDF)',
+      }];
+      if (data.combined_pdf_url) {
+        downloads.push({
+          url: data.combined_pdf_url,
+          label: 'Download combined PDF with supporting documents',
+        });
+      }
+
+      downloads.forEach(download => {
+        const link = document.createElement('a');
+        link.className = 'btn btn-outline on-dark';
+        link.href = new URL(download.url, apiBaseUrl).toString();
+        link.textContent = download.label;
+        downloadLinks.appendChild(link);
+      });
+      downloadsPanel.hidden = false;
+      downloadsPanel.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
     })
     .catch(requestError => {
       console.error('Error:', requestError);
