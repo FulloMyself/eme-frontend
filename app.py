@@ -1,6 +1,6 @@
 import os
 import tempfile
-from flask import Flask, request, render_template, send_from_directory, jsonify
+from flask import Flask, request, render_template, redirect, send_from_directory, jsonify
 from werkzeug.utils import secure_filename
 from datetime import datetime
 from pypdf import PdfReader, PdfWriter
@@ -49,6 +49,12 @@ def index():
 def cv_maker():
     """Serve the CV Maker page"""
     return send_from_directory(BASE_DIR, 'cv-maker.html')
+
+@app.route('/CVMaker')
+@app.route('/CVMaker/')
+def cv_maker_alias():
+    """Provide the branded CV Maker URL."""
+    return redirect('/cv-maker.html')
 
 @app.route('/css/<path:filename>')
 def serve_css(filename):
