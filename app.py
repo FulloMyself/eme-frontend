@@ -271,7 +271,7 @@ def create_cv():
             'success': True,
             'message': 'CV generated successfully',
             'cv_filename': cv_filename,
-            'download_url': f'/download_cv/{cv_filename}'
+            'download_url': f'{request.script_root}/download_cv/{cv_filename}'
         })
     
     except ValueError as e:
