@@ -31,6 +31,25 @@ os.makedirs(os.path.join(BASE_DIR, 'templates'), exist_ok=True)
 # Initialize database
 db.init_db()
 
+CV_FRONTEND_ORIGINS = {
+    'https://eme4you.co.za',
+    'https://www.eme4you.co.za',
+    'https://cvapp.eme4you.co.za',
+    'https://eme-frontend-861r.onrender.com',
+}
+
+@app.after_request
+def add_cv_frontend_cors_headers(response):
+    origin = request.headers.get('Origin')
+    if origin in CV_FRONTEND_ORIGINS:
+        response.headers['Access-Control-Allow-Origin'] = origin
+        response.headers['Vary'] = 'Origin'
+        if request.method == 'OPTIONS':
+            response.headers['Access-Control-Allow-Methods'] = 'GET, POST, OPTIONS'
+            response.headers['Access-Control-Allow-Headers'] = 'Content-Type'
+            response.headers['Access-Control-Max-Age'] = '600'
+    return response
+
 @app.errorhandler(413)
 def request_entity_too_large(error):
     return jsonify({'success': False, 'error': 'Uploaded files exceed the 16MB request limit.'}), 413

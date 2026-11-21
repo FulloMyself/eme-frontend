@@ -4,15 +4,6 @@
   const totalSteps = 5;
   let form, steps, progressSteps, prevBtn;
 
-  function getApplicationBasePath() {
-    const segments = window.location.pathname.split('/').filter(Boolean);
-    const page = segments[segments.length - 1];
-    if (page === 'index.html' || page === 'cv-maker.html' || page === 'cv-maker') {
-      segments.pop();
-    }
-    return segments.length ? `/${segments.join('/')}` : '';
-  }
-
   function init() {
     form = document.getElementById('cvForm');
     steps = document.querySelectorAll('.form-step');
@@ -318,17 +309,17 @@
     const submitLabel = document.getElementById('submitLabel');
     if (submitLabel) submitLabel.textContent = 'Generating...';
     
-    fetch(`${getApplicationBasePath()}/create_cv`, {
+    const apiBaseUrl = form.dataset.apiBaseUrl || window.location.origin;
+    fetch(`${apiBaseUrl.replace(/\/+$/, '')}/create_cv`, {
       method: 'POST',
       body: formData,
-      headers: { 'X-Requested-With': 'XMLHttpRequest' }
     })
     .then(async response => {
       const data = await response.json();
       if (!response.ok || !data.success) {
         throw new Error(data.error || `Server error: ${response.status}`);
       }
-      window.location.href = data.download_url;
+      window.location.href = new URL(data.download_url, apiBaseUrl).toString();
     })
     .catch(requestError => {
       console.error('Error:', requestError);

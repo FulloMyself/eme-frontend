@@ -8,26 +8,26 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-<link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
-<link rel="stylesheet" href="css/styles.css" />
-<link rel="stylesheet" href="css/cv-maker.css" />
+<link rel="icon" type="image/x-icon" href="../assets/favicon.ico" />
+<link rel="stylesheet" href="../css/styles.css" />
+<link rel="stylesheet" href="../css/cv-maker.css" />
 </head>
 <body>
 
 <header class="site-nav">
   <div class="nav-inner">
-    <a href="index.html" class="nav-mark">
-      <img src="assets/eme-logo.png" alt="EME" class="nav-logo" onerror="this.style.display='none'; this.parentElement.classList.add('nav-mark-fallback');">
+    <a href="/#home" class="nav-mark">
+      <img src="../assets/eme-logo.png" alt="EME" class="nav-logo" onerror="this.style.display='none'; this.parentElement.classList.add('nav-mark-fallback');">
       <span class="nav-logo-fallback">
         <span class="dot"></span>EME
       </span>
     </a>
     <ul class="nav-links" id="navLinks">
-      <li><a href="index.html#services">Services</a></li>
-      <li><a href="index.html#work">Work</a></li>
-      <li><a href="cv-maker.html" class="nav-featured">CV Maker</a></li>
+      <li><a href="/#services">Services</a></li>
+      <li><a href="/#work">Work</a></li>
+      <li><a href="/CVMaker/" class="nav-featured">CV Maker</a></li>
       <li><a href="https://eme4you.co.za/ContractsZAR/#/" target="_blank" rel="noopener">ContractZAR</a></li>
-      <li><a href="index.html#contact">Contact</a></li>
+      <li><a href="/#contact">Contact</a></li>
     </ul>
     <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu">
       <span></span><span></span><span></span>
@@ -87,7 +87,7 @@
       </div>
     </div>
 
-    <form id="cvForm" class="cv-form" enctype="multipart/form-data">
+    <form id="cvForm" class="cv-form" enctype="multipart/form-data" data-api-base-url="https://eme-frontend-861r.onrender.com">
       <!-- Step 1: Personal Information -->
       <div class="form-step active" data-step="1">
         <div class="form-section-header">
@@ -326,18 +326,18 @@
       <div class="tb-col">
         <h4>Navigate</h4>
         <ul>
-          <li><a href="index.html">Home</a></li>
-          <li><a href="cv-maker.html">CV Maker</a></li>
-          <li><a href="index.html#services">Services</a></li>
-          <li><a href="index.html#contact">Contact</a></li>
+          <li><a href="/#home">Home</a></li>
+          <li><a href="/CVMaker/">CV Maker</a></li>
+          <li><a href="/#services">Services</a></li>
+          <li><a href="/#contact">Contact</a></li>
         </ul>
       </div>
       <div class="tb-col">
         <h4>Tools</h4>
         <ul>
-          <li><a href="cv-maker.html">CV Generator</a></li>
-          <li><a href="index.html#services">Business Registration</a></li>
-          <li><a href="index.html#services">Website Design</a></li>
+          <li><a href="/CVMaker/">CV Generator</a></li>
+          <li><a href="/#services">Business Registration</a></li>
+          <li><a href="/#services">Website Design</a></li>
         </ul>
       </div>
       <div class="tb-col">
@@ -356,7 +356,7 @@
   </div>
 </footer>
 
-<script src="js/script.js"></script>
-<script src="js/cv-maker.js"></script>
+<script src="../js/script.js"></script>
+<script src="../js/cv-maker.js"></script>
 </body>
 </html>
